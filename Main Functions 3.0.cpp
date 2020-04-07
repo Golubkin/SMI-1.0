@@ -119,26 +119,25 @@ double powTEST(double x, double n)
 // Возвращает квадратный корень числа x.
 double sqrtTEST(double x, double epsilon = 0.0001)
 {
-    if (x < 0)
+    if (x >= 0)
     {
-        // Ничего не возвращает.
-    }
-    double low = 0.0;
-    double high = (x > 1) ? x : 1.0;
-    double result;
-    double difference;
-    while (low <= high)
-    {
-        result = (low + high) / 2;
-        difference = powTEST(result, 2) - x;
-        if (absTEST(difference) < epsilon)
-            return result;
-        else
+        double low = 0.0;
+        double high = (x > 1) ? x : 1.0;
+        double result;
+        double difference;
+        while (low <= high)
         {
-            if (difference < 0)
-                low = result;
+            result = (low + high) / 2;
+            difference = powTEST(result, 2) - x;
+            if (absTEST(difference) < epsilon)
+                return result;
             else
-                high = result;
+            {
+                if (difference < 0)
+                    low = result;
+                else
+                    high = result;
+            }
         }
     }
 }
