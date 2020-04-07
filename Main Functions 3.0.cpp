@@ -7,7 +7,7 @@ int roundTEST(double);
 double absTEST(double);
 double powTEST(double, double); // Новая проблема (строка 114) - вместо 1.0 / expTEST(n * lnTEST(x)) возвращает expTEST(n * lnTEST(x)).
 double sqrtTEST1(double, double); // Исправил. Теперь работает и для x < 1. Оставить ф-ю или переписать с применением ряда Тейлора?
-int factTEST(int);
+int factTEST(unsigned int);
 double sinTEST(double, unsigned int); // Исправил. Проблема была та же, что и в exp().
 double cosTEST(double);
 double tgTEST(double); // Неправильно работает при х = 3 * pi / 2 + 2 * pi * n. При x = pi / 2 + x = 2 * pi * n - правильно (inf).
@@ -143,7 +143,7 @@ double sqrtTEST(double x, double epsilon = 0.0001)
 }
 
 // Возвращает факториал числа x.
-int factTEST(int x)
+int factTEST(unsigned int x)
 {
     if (x > 1)
         return x * factTEST(x - 1);
@@ -151,10 +151,6 @@ int factTEST(int x)
         return 1;
     if (x == 0)
         return 1;
-    if (x < 0)
-    {
-        // Ничего не возвращает.
-    }
 }
 
 // Возвращает синус угла х (радианы). n - количество слагаемых в ряде Маклорена.
