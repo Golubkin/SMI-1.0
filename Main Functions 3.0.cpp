@@ -6,7 +6,7 @@ int ceilTEST(double);
 int roundTEST(double);
 double absTEST(double);
 double powTEST(double, double); // Новая проблема (строка 114) - вместо 1.0 / expTEST(n * lnTEST(x)) возвращает expTEST(n * lnTEST(x)).
-double sqrtTEST1(double, double); // Исправил. Теперь работает и для x < 1. Оставить ф-ю или переписать с применением ряда Тейлора?
+double sqrtTEST(double, double); // Исправил. Теперь работает и для x < 1. Оставить ф-ю или переписать с применением ряда Тейлора?
 int factTEST(unsigned int);
 double sinTEST(double, unsigned int); // Исправил. Проблема была та же, что и в exp().
 double cosTEST(double);
