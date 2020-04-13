@@ -178,7 +178,7 @@ double ctgTEST(double x)
     return (double)cosTEST(x) / sinTEST(x);
 }
 
-// Возвращает число е в степени х. Почему работает хорошо только при x, близких к нулю? (Как отрицательных, так и положительных).
+// Возвращает число е в степени х.
 double expTEST(double x, unsigned int n = 10)
 {
     if (absTEST(x) <= 1.0)
