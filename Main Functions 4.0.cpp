@@ -85,14 +85,7 @@ double powTEST(double x, double n)
             return res;
         }
         if (x != 0.0 && n < 0.0)
-        {
-            double res = 1.0;
-            while (n++)
-            {
-                res *= x;
-            }
-            return 1.0 / res;
-        }
+            return 1.0 / powTEST(x, -n);
     }
     else // Если n - действительное (в нашем случае - просто рациональное). При x < 0 ф-я не определена.
     {
