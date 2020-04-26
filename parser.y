@@ -1,3 +1,5 @@
+//Bison-файл.
+
 %{
       #include <iostream>
       using namespace std;
