@@ -1,5 +1,8 @@
 // Flex-файл.
 
+// char* yytext - переменная, хранящая строку из C++ (С \0 в конце), которая является текущим найденным шаблоном. 
+// int yyleng - переменная, хранящая длину этой строки.
+// yylex() - ф-я, содержащая все действия, описанные в Flex-файле (секция правил). Нужно добавить в main().
 %{
 #include <iostream>
 using namespace std;
@@ -19,11 +22,20 @@ help       {
 [ \t\n]+   {
                 //Игнорирование пробелов, табуляции и пустых строк.
            }
-[1-9][0-9]*     return NUMBER; // Токен.
-"+"             return PLUS;
-"-"             return MINUS;
-"*"             return MULTIPLY;
-"/"             return DIVIDE;
-"%"             return REMAINDER;
+("+"|"-")?[1-9][0-9]*           return INTNUMBER; // Токен.
+("+"|"-")?[0-9]+"."[0-9]+       return FLOATNUMBER;
+"+"                             return PLUS;
+"-"                             return MINUS;
+"*"                             return MULTIPLY;
+"/"                             return DIVIDE;
+"%"                             return REMAINDER;
+"**"                            return POW;
+"("                             return LEFTBR;
+")"                             return RIGHTBR;
 
 %%
+
+int main()
+{
+    yylex();
+}
