@@ -12,20 +12,20 @@
 // Сделать приоритет.
 AddOrSub: NUMBER PLUS NUMBER
           {
-                cout << $1 + $2 << endl;
+                cout << $1 + $3 << endl;
           }
           |  NUMBER MINUS NUMBER
           {
-                cout << $1 - $2 << endl;
+                cout << $1 - $3 << endl;
           }
           ;
 MultOrDiv: NUMBER MULTIPLY NUMBER
            {
-                cout << $1 * $2 << endl;
+                cout << $1 * $3 << endl;
            }
            | NUMBER DIVIDE NUMBER
            {
-                cout << $1 / $2 << endl;
+                cout << $1 / $3 << endl;
            }
            ;
 
