@@ -16,17 +16,14 @@ help       {
 .          {//перенести потом в конец.
                 cout << "Syntax error" << endl;
            }
-[ \t]+     {
-                //Игнорирование пробелов и табуляции. Символ + означает повторение пробела или табуляции 1 или более раз.
+[ \t\n]+   {
+                //Игнорирование пробелов, табуляции и пустых строк.
            }
-\n         {//+?
-                //Игнорирование пустых строк.
-           }
-[0-9]+     return NUMBER; // Токен.
-"+"        return PLUS;
-"-"        return MINUS;
-"*"        return MULTIPLY;
-"/"        return DIVIDE;
-"%"        return REMAINDER;
+[1-9][0-9]*     return NUMBER; // Токен.
+"+"             return PLUS;
+"-"             return MINUS;
+"*"             return MULTIPLY;
+"/"             return DIVIDE;
+"%"             return REMAINDER;
 
 %%
