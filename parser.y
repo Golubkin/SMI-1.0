@@ -1,11 +1,17 @@
 //Bison-файл.
 
+%token OR AND NOT EQUAL PLUS MINUS MULITPLY DIVIDE INTNUMBER FLOATNUMBER REMAINDER POW LEFTBR RIGHTBR
+%right EQUAL
+%left OR
+%left AND
+%left NOT
+%left PLUS MINUS
+%left MULTIPLY DIVIDE REMAINDER
+
 %{
       #include <iostream>
       using namespace std;
 %}
-
-// описания (дополнительные определения токенов)
 
 %%
 //Определение наборов правил для анализа
