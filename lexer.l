@@ -5,6 +5,7 @@
 // yylex() - ф-я, содержащая все действия, описанные в Flex-файле (секция правил). Нужно добавить в main().
 %{
 #include <iostream>
+#include "y.tab.h"
 using namespace std;
 // добавить main func 
 %}
@@ -24,6 +25,7 @@ help       {
            }
 ("+"|"-")?[1-9][0-9]*           return INTNUMBER; // Токен.
 ("+"|"-")?[0-9]+"."[0-9]+       return FLOATNUMBER;
+"="                             return EQUAL;
 "+"                             return PLUS;
 "-"                             return MINUS;
 "*"                             return MULTIPLY;
