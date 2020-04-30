@@ -35,4 +35,4 @@ MultOrDiv: NUMBER MULTIPLY NUMBER
 
 %%
 
-//Дополнительный исходный код С++
+yylex();
