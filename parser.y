@@ -12,26 +12,19 @@
 %}
 
 %%
-//Определение наборов правил для анализа
-// Сделать приоритет.
-AddOrSub: NUMBER PLUS NUMBER
-          {
-                cout << $1 + $3 << endl;
-          }
-          |  NUMBER MINUS NUMBER
-          {
-                cout << $1 - $3 << endl;
-          }
-          ;
-MultOrDiv: NUMBER MULTIPLY NUMBER
-           {
-                cout << $1 * $3 << endl;
-           }
-           | NUMBER DIVIDE NUMBER
-           {
-                cout << $1 / $3 << endl;
-           }
-           ;
+
+expr1: mul_expr
+        | expr1 PLUS expr2  { $$ = $1 + $3; }
+        | expr1 MINUS expr2 { $$ = $1 - $3; }
+        ;
+expr2: primary
+        | expr2 MULTIPLY primary { $$ = $1 * $3; }
+        | expr2 DIVIDE primary { $$ = $1 / $3; }
+        | expr2 REMAINDER primary { $$ = $1 % $3; }
+        ;
+primary: FLOATNUMBER { $$ = $1; }
+        | INTNUMBER { $$ = $1; }
+        ;
 
 %%
 
