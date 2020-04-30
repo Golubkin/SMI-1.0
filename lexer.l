@@ -28,9 +28,30 @@ help       {
 "*"                             return MULTIPLY;
 "/"                             return DIVIDE;
 "%"                             return REMAINDER;
-"**"                            return POW;
-"("                             return LEFTBR;
-")"                             return RIGHTBR;
+"("                             return LB;
+")"                             return RB;
+","                             return COMMA;
+"#"                             return COMMENT;
+"and"                           return AND;
+"or"                            return OR;
+"not"                           return NOT;
+"floorSMI"                      return TFLOOR;
+"ceilSMI"                       return TCEIL;
+"roundSMI"                      return TROUND;
+"absSMI"                        return TABC;
+"powSMI"                        return TPOW;
+"sqrtSMI"                       return TSQRT;
+"factSMI"                       return TFACT;
+"sinSMI"                        return TSIN;
+"cosSMI"                        return TCOS;
+"tgSMI"                         return TTG;
+"expSMI"                        return TEXP;
+"lnSMI"                         return TLN;
+"logSMI"                        return TLOG;
+"if"                            return IF;
+"else"                          return ELSE;
+"while"                         return WHILE;
+"for"                           return FOR;
 
 %%
 
