@@ -1,10 +1,45 @@
 //Bison-файл.
 
-%token OR AND NOT EQUAL PLUS MINUS MULITPLY DIVIDE INTNUMBER FLOATNUMBER REMAINDER POW LEFTBR RIGHTBR
+%token INTNUMBER
+%token FLOATNUMBER
+%token EQUAL
+%token PLUS
+%token MINUS
+%token MULTIPLY
+%token DIVIDE
+%token REMAINDER
+%token LB
+%token RB
+%token COMMA
+%token COMMENT
+%token AND
+%token OR
+%token NOT
+%token TFLOOR
+%token TCEIL
+%token TROUND
+%token TABC
+%token TPOW
+%token TSQRT
+%token TFACT
+%token TSIN
+%token TCOS
+%token TTG
+%token TEXP
+%token TLN
+%token TLOG
+%token IF
+%token ELSE
+%token WHILE
+%token FOR
+
+/*
 %right EQUAL
+
 %left OR AND NOT
 %left PLUS MINUS
 %left MULTIPLY DIVIDE REMAINDER
+*/
 
 %{
       #include <iostream>
