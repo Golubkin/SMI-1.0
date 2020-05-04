@@ -1,21 +1,18 @@
 // Flex-файл.
 
 %{
-#include <iostream>
-#include "y.tab.h"
-using namespace std;
-// добавить main func 
+
 %}
 
 %%
 "hello"    {
-                cout << "Hello, My name is Super-Mega-Interpreter (SMI). Enter "help" to find out about my abilities!" << endl;
+                printf("Hello, My name is Super-Mega-Interpreter (SMI). Enter \"help\" to find out about my abilities!");
            }
 "help"     {
                 // будет показывать доступные команды
            }
 .          {//перенести потом в конец.
-                cout << "Syntax error" << endl;
+                printf("Syntax error");
            }
 [ \t]+     {
                 //Игнорирование пробелов и табуляции.
