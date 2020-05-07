@@ -1,7 +1,3 @@
-using namespace std;
-template <typename T>
-
-// Возвращает модуль числа x.
 T absExample(T x)
 {
     if (x >= 0)
