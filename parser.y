@@ -1,5 +1,3 @@
-//Bison-файл.
-
 %token INTNUMBER
 %token FLOATNUMBER
 %token EQUAL
