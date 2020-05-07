@@ -1,7 +1,8 @@
 %option noyywrap // Опция noyywrap указывает, что входной текст один, и после чтения EOF не нужно пытаться перейти к следующему тексту.
 
 %{
-    #include <iostream>
+    #include <stdio.h>
+    #define YY_DECL int yylex()
     #include "parser.tab.h"
 %}
 
@@ -14,8 +15,9 @@
                
            }
 [ \t]+     ;
-("+"|"-")?[1-9][0-9]*           { return (INTNUMBER); }
-("+"|"-")?[0-9]+"."[0-9]+       { return (FLOATNUMBER); }
+("+"|"-")?[1-9][0-9]*           { yylval.one = atoi(yytext); return (INTNUMBER); }
+("+"|"-")?[0-9]+"."[0-9]+       { yylval.two = atof(yytext); return (FLOATNUMBER); }
+\n                              { return (NEWLINE); }
 "="                             { return (EQUAL); }
 "+"                             { return (PLUS); }
 "-"                             { return (MINUS); }
@@ -26,6 +28,7 @@
 ")"                             { return (RB); }
 ","                             { return (COMMA); }
 "#"                             { return (COMMENT); }
+"exit"                          { return (EXIT); }
 "and"                           { return (AND); }
 "or"                            { return (OR); }
 "not"                           { return (NOT); }
