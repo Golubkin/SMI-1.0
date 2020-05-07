@@ -1,5 +1,4 @@
 #include <iostream>
-#include "MathFunctions.h"
 using namespace std;
 
 // Возвращает максимальное целое, не превышающее x.
