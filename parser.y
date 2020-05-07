@@ -7,6 +7,11 @@
       void yyerror(const char *s);
 %}
 
+%union { int one; float two; }
+
+%token<one> INTNUMBER
+%token<two> FLOATNUMBER
+
 %token NEWLINE
 %token EXIT
 %token EQUAL
@@ -45,11 +50,6 @@
 %left OR AND NOT
 %left PLUS MINUS
 %left MULTIPLY DIVIDE REMAINDER
-
-%union { int one; float two; }
-
-%token<one> INTNUMBER
-%token<two> FLOATNUMBER
 
 %type<one> expr1
 %type<two> expr2
