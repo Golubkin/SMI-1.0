@@ -1,5 +1,5 @@
-%token INTNUMBER
-%token FLOATNUMBER
+%token NEWLINE
+%token EXIT
 %token EQUAL
 %token PLUS
 %token MINUS
@@ -31,34 +31,78 @@
 %token WHILE
 %token FOR
 
-/*
 %right EQUAL
 
 %left OR AND NOT
 %left PLUS MINUS
 %left MULTIPLY DIVIDE REMAINDER
-*/
 
 %{
-      #include <iostream>
-      using namespace std;
+      #include <stdio.h>
+      #include <stdlib.h>
+	extern int yylex();
+      extern int yyparse();
+      extern FILE* yyin;
+      void yyerror(const char *s);
 %}
 
-%%
+%union { int one; float two; }
 
-expr1: mul_expr
-        | expr1 PLUS expr2  { $$ = $1 + $3; }
-        | expr1 MINUS expr2 { $$ = $1 - $3; }
-        ;
-expr2: primary
-        | expr2 MULTIPLY primary { $$ = $1 * $3; }
-        | expr2 DIVIDE primary { $$ = $1 / $3; }
-        | expr2 REMAINDER primary { $$ = $1 % $3; }
-        ;
-primary: FLOATNUMBER { $$ = $1; }
-        | INTNUMBER { $$ = $1; }
-        ;
+%token<one> INTNUMBER
+%token<two> FLOATNUMBER
+
+%type<one> expr1
+%type<two> expr2
+
+%start calculation
 
 %%
 
-yylex();
+calculation:
+	   | calculation line
+;
+
+line: NEWLINE
+    | expr2 NEWLINE { printf("\tResult: %f\n", $1);}
+    | expr1 NEWLINE { printf("\tResult: %i\n", $1); }
+    | EXIT NEWLINE { printf("bye!\n"); exit(0); }
+;
+expr2: FLOATNUMBER               { $$ = $1; }
+     | expr2 PLUS expr2	         { $$ = $1 + $3; }
+     | expr2 MINUS expr2	   { $$ = $1 - $3; }
+     | expr2 MULTIPLY expr2 	   { $$ = $1 * $3; }
+     | expr2 DIVIDE expr2	   { $$ = $1 / $3; }
+     | LB expr2 RB  	         { $$ = $2; }
+     | expr1 PLUS expr2	 	   { $$ = $1 + $3; }
+     | expr1 MINUS expr2	   { $$ = $1 - $3; }
+     | expr1 MULTIPLY expr2 	   { $$ = $1 * $3; }
+     | expr1 DIVIDE expr2	   { $$ = $1 / $3; }
+     | expr2 PLUS expr1	 	   { $$ = $1 + $3; }
+     | expr2 MINUS expr1	   { $$ = $1 - $3; }
+     | expr2 MULTIPLY expr1 	   { $$ = $1 * $3; }
+     | expr2 DIVIDE expr1	   { $$ = $1 / $3; }
+     | expr1 DIVIDE expr1 	   { $$ = $1 / (float)$3; }
+;
+
+expr1: INTNUMBER			   { $$ = $1; }
+     | expr1 PLUS expr1		   { $$ = $1 + $3; }
+     | expr1 MINUS expr1	   { $$ = $1 - $3; }
+     | expr1 MULTIPLY expr1	   { $$ = $1 * $3; }
+     | LB expr1 RB		   { $$ = $2; }
+;
+
+%%
+
+int main() {
+	yyin = stdin;
+
+	do {
+		yyparse();
+	} while(!feof(yyin));
+
+	return 0;
+}
+
+void yyerror(const char* s) {
+	fprintf(stderr, "Parse error: %s\n", s);
+	exit(1);
