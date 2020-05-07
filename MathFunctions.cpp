@@ -218,8 +218,3 @@ double logSMI(double base, double argument, unsigned int n = 100)
     if (base > 0.0 && base != 1.0 && argument > 0.0)
         return (double)lnSMI(argument, n) / lnSMI(base, n);
 }
-
-int main()
-{
-
-}
