@@ -1,3 +1,12 @@
+%{
+      #include <stdio.h>
+      #include <stdlib.h>
+      extern int yylex();
+      extern int yyparse();
+      extern FILE* yyin;
+      void yyerror(const char *s);
+%}
+
 %token NEWLINE
 %token EXIT
 %token EQUAL
@@ -36,15 +45,6 @@
 %left OR AND NOT
 %left PLUS MINUS
 %left MULTIPLY DIVIDE REMAINDER
-
-%{
-      #include <stdio.h>
-      #include <stdlib.h>
-	extern int yylex();
-      extern int yyparse();
-      extern FILE* yyin;
-      void yyerror(const char *s);
-%}
 
 %union { int one; float two; }
 
