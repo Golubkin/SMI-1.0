@@ -15,7 +15,6 @@
 
 %token NEWLINE
 %token EXIT
-%token EQUAL
 %token PLUS
 %token MINUS
 %token MULTIPLY
@@ -23,10 +22,16 @@
 %token REMAINDER
 %token LB
 %token RB
+%token LSQ
+%token RSQ
+%token LESS
+%token MORE
+%token LESSOR
+%token MOREOR
+%token EQUAL
+%token NEQUAL
 %token COMMA
 %token COMMENT
-%token LC
-%token RC
 %token AND
 %token OR
 %token NOT
@@ -61,6 +66,7 @@
 
 %%
 
+if1: 
 calculation:
 	   | calculation line
 ;
@@ -76,35 +82,35 @@ expr2: FLOATNUMBER              		 { $$ = $1; }
      | expr2 MULTIPLY expr2 	  		 { $$ = $1 * $3; }
      | expr2 DIVIDE expr2	  		 { $$ = $1 / $3; }
      | LB expr2 RB  	        		 { $$ = $2; }
-     | TFLOOR LC expr2 RC       		 { $$ = SMIfloor($3); }
-     | TCEIL LC expr2 RC        		 { $$ = SMIceil($3); }
-     | TROUND LC expr2 RC         		 { $$ = SMIround($3); }
-     | TABS LC expr2 RC            		 { $$ = SMIabs($3); }
-     | TLN LC expr2 RC         			 { $$ = SMIln($3); }
-     | TEXP LC expr2 RC       		         { $$ = SMIexp($3); }
-     | TSQRT LC expr2 RC        		 { $$ = SMIsqrt($3); }
-     | TSIN LC expr2 RC       			 { $$ = SMIsin($3); }
-     | TCOS LC expr2 RC       			 { $$ = SMIcos($3); }
-     | TTG LC expr2 RC        			 { $$ = SMItg($3); }
-     | TCTG LC expr2 RC      			 { $$ = SMIctg($3); }
-     | TPOW LC expr2 COMMA expr2 RC  		 { $$ = SMIpow($3, $5); }
-     | TLOG LC expr2 COMMA expr2 RC  		 { $$ = SMIlog($3, $5); }
+     | TFLOOR LSQ expr2 RSQ      		 { $$ = SMIfloor($3); }
+     | TCEIL LSQ expr2 RSQ        		 { $$ = SMIceil($3); }
+     | TROUND LSQ expr2 RSQ         		 { $$ = SMIround($3); }
+     | TABS LSQ expr2 RSQ            		 { $$ = SMIabs($3); }
+     | TLN LSQ expr2 RSQ         	         { $$ = SMIln($3); }
+     | TEXP LSQ expr2 RSQ       	         { $$ = SMIexp($3); }
+     | TSQRT LSQ expr2 RSQ        		 { $$ = SMIsqrt($3); }
+     | TSIN LSQ expr2 RSQ       		 { $$ = SMIsin($3); }
+     | TCOS LSQ expr2 RSQ       		 { $$ = SMIcos($3); }
+     | TTG LSQ expr2 RSQ        		 { $$ = SMItg($3); }
+     | TCTG LSQ expr2 RSQ      			 { $$ = SMIctg($3); }
+     | TPOW LSQ expr2 COMMA expr2 RSQ  		 { $$ = SMIpow($3, $5); }
+     | TLOG LSQ expr2 COMMA expr2 RSQ  		 { $$ = SMIlog($3, $5); }
      | expr1 PLUS expr2	 	   		 { $$ = $1 + $3; }
      | expr1 MINUS expr2	      		 { $$ = $1 - $3; }
      | expr1 MULTIPLY expr2 	   		 { $$ = $1 * $3; }
      | expr1 DIVIDE expr2	   		 { $$ = $1 / $3; }
-     | TPOW LC expr1 COMMA expr2 RC  		 { $$ = SMIpow($3, $5); }
-     | TLOG LC expr1 COMMA expr2 RC  		 { $$ = SMIlog($3, $5); }
+     | TPOW LSQ expr1 COMMA expr2 RSQ  		 { $$ = SMIpow($3, $5); }
+     | TLOG LSQ expr1 COMMA expr2 RSQ  		 { $$ = SMIlog($3, $5); }
      | expr2 PLUS expr1	 	   		 { $$ = $1 + $3; }
      | expr2 MINUS expr1	   		 { $$ = $1 - $3; }
      | expr2 MULTIPLY expr1 	   		 { $$ = $1 * $3; }
      | expr2 DIVIDE expr1	  		 { $$ = $1 / $3; }
-     | TPOW LC expr2 COMMA expr1 RC  		 { $$ = SMIpow($3, $5); }
-     | TLOG LC expr2 COMMA expr1 RC  		 { $$ = SMIlog($3, $5); }
+     | TPOW LSQ expr2 COMMA expr1 RSQ  		 { $$ = SMIpow($3, $5); }
+     | TLOG LSQ expr2 COMMA expr1 RSQ  		 { $$ = SMIlog($3, $5); }
      | expr1 DIVIDE expr1 	   		 { $$ = $1 / (float)$3; }
      | expr1 REMAINDER expr1                     { $$ = $1 % $3; }
-     | TPOW LC expr1 COMMA expr1 RC  		 { $$ = SMIpow($3, $5); }
-     | TLOG LC expr1 COMMA expr1 RC  		 { $$ = SMIlog($3, $5); }
+     | TPOW LSQ expr1 COMMA expr1 RSQ  		 { $$ = SMIpow($3, $5); }
+     | TLOG LSQ expr1 COMMA expr1 RSQ  		 { $$ = SMIlog($3, $5); }
 ;
 
 expr1: INTNUMBER			     	 { $$ = $1; }
@@ -112,18 +118,18 @@ expr1: INTNUMBER			     	 { $$ = $1; }
      | expr1 MINUS expr1	   		 { $$ = $1 - $3; }
      | expr1 MULTIPLY expr1	   		 { $$ = $1 * $3; }
      | LB expr1 RB		   		 { $$ = $2; }
-     | TFLOOR LC expr1 RC          		 { $$ = SMIfloor($3); }
-     | TCEIL LC expr1 RC        		 { $$ = SMIceil($3); }
-     | TROUND LC expr1 RC         		 { $$ = SMIround($3); }
-     | TABS LC expr1 RC            		 { $$ = SMIabs($3); }
-     | TFACT LC expr1 RC          		 { $$ = SMIfact($3); }
-     | TLN LC expr1 RC          		 { $$ = SMIln($3); }
-     | TEXP LC expr1 RC         		 { $$ = SMIexp($3); }
-     | TSQRT LC expr1 RC         		 { $$ = SMIsqrt($3); }
-     | TSIN LC expr1 RC       			 { $$ = SMIsin($3); }
-     | TCOS LC expr1 RC       			 { $$ = SMIcos($3); }
-     | TTG LC expr1 RC        			 { $$ = SMItg($3); }
-     | TCTG LC expr1 RC      			 { $$ = SMIctg($3); }
+     | TFLOOR LSQ expr1 RSQ          		 { $$ = SMIfloor($3); }
+     | TCEIL LSQ expr1 RSQ        		 { $$ = SMIceil($3); }
+     | TROUND LSQ expr1 RSQ         		 { $$ = SMIround($3); }
+     | TABS LSQ expr1 RSQ            		 { $$ = SMIabs($3); }
+     | TFACT LSQ expr1 RSQ          		 { $$ = SMIfact($3); }
+     | TLN LSQ expr1 RSQ          		 { $$ = SMIln($3); }
+     | TEXP LSQ expr1 RSQ         		 { $$ = SMIexp($3); }
+     | TSQRT LSQ expr1 RSQ         		 { $$ = SMIsqrt($3); }
+     | TSIN LSQ expr1 RSQ       		 { $$ = SMIsin($3); }
+     | TCOS LSQ expr1 RSQ       		 { $$ = SMIcos($3); }
+     | TTG LSQ expr1 RSQ       			 { $$ = SMItg($3); }
+     | TCTG LSQ expr1 RSQ      			 { $$ = SMIctg($3); }
 ;
 
 %%
