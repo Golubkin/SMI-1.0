@@ -38,7 +38,7 @@
 "SMIfloor"                      { return (TFLOOR); }
 "SMIceil"                       { return (TCEIL); }
 "SMIround"                      { return (TROUND); }
-"SMIabs"                        { return (TABC); }
+"SMIabs"                        { return (TABS); }
 "SMIpow"                        { return (TPOW); }
 "SMIsqrt"                       { return (TSQRT); }
 "SMIfact"                       { return (TFACT); }
