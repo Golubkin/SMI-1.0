@@ -101,6 +101,7 @@ expr2: FLOATNUMBER              		 { $$ = $1; }
      | TPOW LC expr2 COMMA expr1 RC  		 { $$ = SMIpow($3, $5); }
      | TLOG LC expr2 COMMA expr1 RC  		 { $$ = SMIlog($3, $5); }
      | expr1 DIVIDE expr1 	   		 { $$ = $1 / (float)$3; }
+     | expr1 REMAINDER expr1                     { $$ = $1 % $3; }
      | TPOW LC expr1 COMMA expr1 RC  		 { $$ = SMIpow($3, $5); }
      | TLOG LC expr1 COMMA expr1 RC  		 { $$ = SMIlog($3, $5); }
 ;
