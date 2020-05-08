@@ -75,7 +75,7 @@ double SMIpow(double x, double n)
         if (x == 0.0)
             return 0.0;
         if (x > 0.0)
-            return SMIexp(n * lnSMI(x, 100), 10); // Почему выдаёт ошибку, если не указывать 100 и 10? Это же аргументы по умолчанию.
+            return SMIexp(n * SMIln(x, 100), 10); // Почему выдаёт ошибку, если не указывать 100 и 10? Это же аргументы по умолчанию.
     }
 }
 
@@ -182,7 +182,7 @@ double SMIexp(double x, unsigned int n = 10)
     }
     if (x < -1.0)
     {
-        double int_x = ceilSMI(x), fract_x = x - int_x;
+        double int_x = SMIceil(x), fract_x = x - int_x;
         return SMIpow(e, int_x) * SMIexp(fract_x);
     }
 }
