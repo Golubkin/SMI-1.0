@@ -10,7 +10,7 @@
 %%
 
 "hello"    {
-                cout << "Hello, My name is Super-Mega-Interpreter (SMI). Enter \"help\" to find out about my abilities!" << endl;
+                printf("Hello, My name is Super-Mega-Interpreter (SMI). Enter \"help\" to find out about my abilities!");
            }
 "help"     {
                
