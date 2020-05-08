@@ -10,7 +10,7 @@
 %%
 
 "hello"    {
-                printf("Hello, My name is Super-Mega-Interpreter (SMI). Enter \"help\" to find out about my abilities!");
+                printf("Hello, My name is Super-Mega-Interpreter (SMI). Enter \"help\" to find out about my abilities!\n");
            }
 "help"     {
                
