@@ -45,6 +45,7 @@
 %token TLN
 %token TLOG
 %token IF
+%token THEN
 %token ELSE
 %token WHILE
 %token FOR
