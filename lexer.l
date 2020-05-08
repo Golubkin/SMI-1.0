@@ -28,8 +28,12 @@
 ")"                             { return (RB); }
 "["                             { return (LSQ); }
 "]"                             { return (RSQ); }
-"<"                             { return (LC); }
-">"                             { return (RC); }
+"<"                             { return (LESS); }
+">"                             { return (MORE); }
+"<="                            { return (LESSOR); }
+">="                            { return (MOREOR); }
+"!="                            { return (NEQUAL);
+"="                             { return (EQUAL); }
 ","                             { return (COMMA); }
 "#"                             { return (COMMENT); }
 "exit"                          { return (EXIT); }
