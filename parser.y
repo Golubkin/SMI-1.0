@@ -33,7 +33,7 @@
 %token TFLOOR
 %token TCEIL
 %token TROUND
-%token TABC
+%token TABS
 %token TPOW
 %token TSQRT
 %token TFACT
