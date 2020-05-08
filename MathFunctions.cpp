@@ -2,7 +2,7 @@
 using namespace std;
 
 // Возвращает максимальное целое, не превышающее x.
-int floorSMI(double x)
+int SMIfloor(double x)
 {
     if (x >= 0)
         return (int)x;
@@ -16,7 +16,7 @@ int floorSMI(double x)
 }
 
 // Возвращает минимальное целое, которое не меньше x.
-int ceilSMI(double x)
+int SMIceil(double x)
 {
     if (x > 0)
     {
@@ -30,7 +30,7 @@ int ceilSMI(double x)
 }
 
 // Возвращает округлённое значение числа x.
-int roundSMI(double x)
+int SMIround(double x)
 {
     if (x >= 0)
         return floorSMI(x + 0.5);
@@ -39,7 +39,7 @@ int roundSMI(double x)
 }
 
 // Возвращает модуль числа x.
-double absSMI(double x)
+double SMIabs(double x)
 {
     if (x >= 0)
         return x;
@@ -49,7 +49,7 @@ double absSMI(double x)
 
 // Возвращает x в степени n. При целом n число x - любое (кроме случая x = 0 и n <= 0). При действительном n число x >= 0.
 // Иррациональных чисел в C++ нет, поэтому будем вместо действительных рассматривать рациональные
-double powSMI(double x, double n)
+double SMIpow(double x, double n)
 {
     if (n == (double)((int)n)) // Если n - целое, и его нельзя представить в виде дроби (т.к. тогда мы расширяем число до рациональных).
     {
@@ -71,19 +71,19 @@ double powSMI(double x, double n)
             return res;
         }
         if (x != 0.0 && n < 0.0)
-            return 1.0 / powSMI(x, -n);
+            return 1.0 / SMIpow(x, -n);
     }
     else // Если n - действительное (в нашем случае - просто рациональное). При x < 0 ф-я не определена.
     {
         if (x == 0.0)
             return 0.0;
         if (x > 0.0)
-            return expSMI(n * lnSMI(x, 100), 10); // Почему выдаёт ошибку, если не указывать 100 и 10? Это же аргументы по умолчанию.
+            return SMIexp(n * lnSMI(x, 100), 10); // Почему выдаёт ошибку, если не указывать 100 и 10? Это же аргументы по умолчанию.
     }
 }
 
 // Возвращает квадратный корень числа x.
-double sqrtSMI(double x, double epsilon = 0.0001)
+double SMIsqrt(double x, double epsilon = 0.0001)
 {
     if (x >= 0)
     {
@@ -94,8 +94,8 @@ double sqrtSMI(double x, double epsilon = 0.0001)
         while (low <= high)
         {
             result = (low + high) / 2;
-            difference = powSMI(result, 2) - x;
-            if (absSMI(difference) < epsilon)
+            difference = SMIpow(result, 2) - x;
+            if (SMIabs(difference) < epsilon)
                 return result;
             else
             {
@@ -109,10 +109,10 @@ double sqrtSMI(double x, double epsilon = 0.0001)
 }
 
 // Возвращает факториал числа x. Для х > 20 не работает.
-unsigned long long int factSMI(unsigned int x)
+unsigned long long int SMIfact(unsigned int x)
 {
     if (x > 1)
-        return x * factSMI(x - 1);
+        return x * SMIfact(x - 1);
     if (x == 1)
         return 1;
     if (x == 0)
@@ -120,7 +120,7 @@ unsigned long long int factSMI(unsigned int x)
 }
 
 // Возвращает синус угла х (радианы). n - количество слагаемых в ряде Маклорена.
-double sinSMI(double x, unsigned int n = 10)
+double SMIsin(double x, unsigned int n = 10)
 {
     const double pi = 3.14159265358979323846;
     double res = 0.0;
@@ -139,40 +139,40 @@ double sinSMI(double x, unsigned int n = 10)
     while (num + 1)
     {
         const double p = (((num + 1) / 2) % 2 == 0) ? -1.0 : 1.0; // (num + 1) / 2 - номер текущего члена.
-        res += powSMI(x, num) / (double)(factSMI(num) * p);
+        res += SMIpow(x, num) / (double)(SMIfact(num) * p);
         num -= 2;
     }
     return res;
 }
 
 // Возвращает косинус угла х (радианы).
-double cosSMI(double x)
+double SMIcos(double x)
 {
     const double pi = 3.14159265358979323846;
-    return sinSMI(pi / 2.0 - x);
+    return SMIsin(pi / 2.0 - x);
 }
 
 // Возвращает тангенс угла х (радианы).
-double tgSMI(double x)
+double SMItg(double x)
 {
-    return (double)sinSMI(x) / cosSMI(x);
+    return (double)SMIsin(x) / SMIcos(x);
 }
 
 // Возвращает котангенс угла x (радианы).
-double ctgSMI(double x)
+double SMIctg(double x)
 {
-    return (double)cosSMI(x) / sinSMI(x);
+    return (double)SMIcos(x) / SMIsin(x);
 }
 
 // Возвращает число е в степени х.
-double expSMI(double x, unsigned int n = 10)
+double SMIexp(double x, unsigned int n = 10)
 {
-    if (absSMI(x) <= 1.0)
+    if (SMIabs(x) <= 1.0)
     {
         double res = 1.0;
         while (n)
         {
-            res += powSMI(x, n) / (double)factSMI(n);
+            res += SMIpow(x, n) / (double)SMIfact(n);
             n--;
         }
         return res;
@@ -181,17 +181,17 @@ double expSMI(double x, unsigned int n = 10)
     if (x > 1.0)
     {
         double int_x = floorSMI(x), fract_x = x - int_x;
-        return powSMI(e, int_x) * expSMI(fract_x);
+        return SMIpow(e, int_x) * SMIexp(fract_x);
     }
     if (x < -1.0)
     {
         double int_x = ceilSMI(x), fract_x = x - int_x;
-        return powSMI(e, int_x) * expSMI(fract_x);
+        return SMIpow(e, int_x) * SMIexp(fract_x);
     }
 }
 
 // Возвращает ln(x). ln(1 + x) = x - x^2 / 2 + x^3 / 3 - x^4 / 4 + ..., работает для |x| < 1. Остальные х приводим к этому интервалу.
-double lnSMI(double x, unsigned int n = 100)
+double SMIln(double x, unsigned int n = 100)
 {
     if (x >= 0.5 && x <= 2.0)
     {
@@ -200,20 +200,20 @@ double lnSMI(double x, unsigned int n = 100)
         while (n)
         {
             const double p = (n % 2 == 0) ? -1.0 : 1.0; // Если n - чётное, то p = -1.0, иначе p = 1.0.
-            res += powSMI(x, n) / (p * n);
+            res += SMIpow(x, n) / (p * n);
             n--;
         }
         return res;
     }
     if (x > 2.0)
-        return -lnSMI(1.0 / x, n);
+        return -SMIln(1.0 / x, n);
     if (x > 0.0 && x < 0.5)
-        return lnSMI(2 * x, n) + lnSMI(0.5, n);
+        return SMIln(2 * x, n) + SMIln(0.5, n);
 }
 
 // Возвращает логарифм по основанию base от аргумента argument.
-double logSMI(double base, double argument, unsigned int n = 100)
+double SMIlog(double base, double argument, unsigned int n = 100)
 {
     if (base > 0.0 && base != 1.0 && argument > 0.0)
-        return (double)lnSMI(argument, n) / lnSMI(base, n);
+        return (double)SMIln(argument, n) / SMIln(base, n);
 }
