@@ -45,6 +45,7 @@
 "SMIsin"                        { return (TSIN); }
 "SMIcos"                        { return (TCOS); }
 "SMItg"                         { return (TTG); }
+"SMIctg"                        { return (TCTG); }
 "SMIexp"                        { return (TEXP);}
 "SMIln"                         { return (TLN); }
 "SMIlog"                        { return (TLOG); }
