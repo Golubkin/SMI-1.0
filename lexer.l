@@ -26,10 +26,12 @@
 "%"                             { return (REMAINDER); }
 "("                             { return (LB); }
 ")"                             { return (RB); }
-","                             { return (COMMA); }
-"#"                             { return (COMMENT); }
+"["                             { return (LSQ); }
+"]"                             { return (RSQ); }
 "<"                             { return (LC); }
 ">"                             { return (RC); }
+","                             { return (COMMA); }
+"#"                             { return (COMMENT); }
 "exit"                          { return (EXIT); }
 "and"                           { return (AND); }
 "or"                            { return (OR); }
