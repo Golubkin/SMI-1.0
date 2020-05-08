@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 // Возвращает максимальное целое, не превышающее x.
 int SMIfloor(double x)
 {
