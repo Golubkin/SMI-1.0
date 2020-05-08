@@ -1,22 +1,5 @@
-#include <iostream>
-using namespace std;
-
-int floorTEST(double);
-int ceilTEST(double);
-int roundTEST(double);
-double absTEST(double);
-double powTEST(double, double);
-double sqrtTEST(double, double);
-unsigned long long int factTEST(unsigned int); // теперь работает до x = 20 включительно.
-double sinTEST(double, unsigned int); // При x = pi + 2 * pi * k получается число, очень близкое к нулю, но не ноль. Вынес это в отдельный случай.
-double cosTEST(double);
-double tgTEST(double);
-double expTEST(double, unsigned int);
-double lnTEST(double, unsigned int);
-double logTEST(double, double, unsigned int);
-
 // Возвращает максимальное целое, не превышающее x.
-int floorTEST(double x)
+int SMIfloor(double x)
 {
     if (x >= 0)
         return (int)x;
@@ -30,7 +13,7 @@ int floorTEST(double x)
 }
 
 // Возвращает минимальное целое, которое не меньше x.
-int ceilTEST(double x)
+int SMIceil(double x)
 {
     if (x > 0)
     {
@@ -44,16 +27,16 @@ int ceilTEST(double x)
 }
 
 // Возвращает округлённое значение числа x.
-int roundTEST(double x)
+int SMIround(double x)
 {
     if (x >= 0)
-        return floorTEST(x + 0.5);
+        return SMIfloor(x + 0.5);
     if (x < 0)
-        return ceilTEST(x - 0.5);
+        return SMIceil(x - 0.5);
 }
 
 // Возвращает модуль числа x.
-double absTEST(double x)
+double SMIabs(double x)
 {
     if (x >= 0)
         return x;
@@ -61,9 +44,78 @@ double absTEST(double x)
         return -x;
 }
 
+// Возвращает факториал числа x. Для х > 20 не работает.
+unsigned long long int SMIfact(unsigned int x)
+{
+    if (x > 1)
+        return x * SMIfact(x - 1);
+    if (x == 1)
+        return 1;
+    if (x == 0)
+        return 1;
+}
+
+
+// Возвращает ln(x). ln(1 + x) = x - x^2 / 2 + x^3 / 3 - x^4 / 4 + ..., работает для |x| < 1. Остальные х приводим к этому интервалу.
+double SMIln(double x)
+{
+    unsigned int n = 100; // Вынес из параметра по умолчанию для облегчения работы с Bison.
+    if (x >= 0.5 && x <= 2.0)
+    {
+        double res = 0.0;
+        x--;
+        while (n)
+        {
+            const double p = (n % 2 == 0) ? -1.0 : 1.0; // Если n - чётное, то p = -1.0, иначе p = 1.0.
+            double powValue = 1.0; 
+            for(int i = n; i != 0; i--){ powValue *= x; }
+            res += powValue / (p * n);
+            n--;
+        }
+        return res;
+    }
+    if (x > 2.0)
+        return -SMIln(1.0 / x);
+    if (x > 0.0 && x < 0.5)
+        return SMIln(2 * x) + SMIln(0.5);
+}
+
+// Возвращает число е в степени х.
+double SMIexp(double x)
+{
+    unsigned int n = 10;
+    if (SMIabs(x) <= 1.0)
+    {
+        double res = 1.0;
+        while (n)
+        {
+            double powValue = 1.0; 
+            for(int i = n; i != 0; i--){ powValue *= x; }
+            res += powValue / (double)SMIfact(n);
+            n--;
+        }
+        return res;
+    }
+    double e = 2.71828182845904523536;
+    if (x > 1.0)
+    {
+        double int_x = SMIfloor(x), fract_x = x - int_x;
+        double powValue = 1.0;
+        for(int i = int_x; i != 0; i--){ powValue *= e; }
+        return powValue * SMIexp(fract_x);
+    }
+    if (x < -1.0)
+    {
+        double int_x = SMIceil(x), fract_x = x - int_x;
+        double powValue = 1.0;
+        for(int i = int_x; i != 0; i++){ powValue *= e; powValue = 1.0 / powValue; }
+        return powValue * SMIexp(fract_x);
+    }
+}
+
 // Возвращает x в степени n. При целом n число x - любое (кроме случая x = 0 и n <= 0). При действительном n число x >= 0.
-// Иррациональных чисел в C++ нет, поэтому будем вместо действительных рассматривать рациональные.
-double powTEST(double x, double n)
+// Иррациональных чисел в C++ нет, поэтому будем вместо действительных рассматривать рациональные
+double SMIpow(double x, double n)
 {
     if (n == (double)((int)n)) // Если n - целое, и его нельзя представить в виде дроби (т.к. тогда мы расширяем число до рациональных).
     {
@@ -85,20 +137,21 @@ double powTEST(double x, double n)
             return res;
         }
         if (x != 0.0 && n < 0.0)
-            return 1.0 / powTEST(x, -n);
+            return 1.0 / SMIpow(x, -n);
     }
     else // Если n - действительное (в нашем случае - просто рациональное). При x < 0 ф-я не определена.
     {
         if (x == 0.0)
             return 0.0;
         if (x > 0.0)
-            return expTEST(n * lnTEST(x, 100), 10); // Почему выдаёт ошибку, если не указывать 100 и 10? Это же аргументы по умолчанию.
+            return SMIexp(n * SMIln(x));
     }
 }
 
 // Возвращает квадратный корень числа x.
-double sqrtTEST(double x, double epsilon = 0.0001)
+double SMIsqrt(double x)
 {
+    double epsilon = 0.0001;
     if (x >= 0)
     {
         double low = 0.0;
@@ -108,8 +161,8 @@ double sqrtTEST(double x, double epsilon = 0.0001)
         while (low <= high)
         {
             result = (low + high) / 2;
-            difference = powTEST(result, 2) - x;
-            if (absTEST(difference) < epsilon)
+            difference = SMIpow(result, 2) - x;
+            if (SMIabs(difference) < epsilon)
                 return result;
             else
             {
@@ -122,20 +175,10 @@ double sqrtTEST(double x, double epsilon = 0.0001)
     }
 }
 
-// Возвращает факториал числа x. Для х > 20 не работает.
-unsigned long long int factTEST(unsigned int x)
-{
-    if (x > 1)
-        return x * factTEST(x - 1);
-    if (x == 1)
-        return 1;
-    if (x == 0)
-        return 1;
-}
-
 // Возвращает синус угла х (радианы). n - количество слагаемых в ряде Маклорена.
-double sinTEST(double x, unsigned int n = 10)
+double SMIsin(double x)
 {
+    unsigned int n = 10;
     const double pi = 3.14159265358979323846;
     double res = 0.0;
     int num = n * 2 - 1; // Число, участвующее в последнем члене ряда Маклорена.
@@ -153,86 +196,35 @@ double sinTEST(double x, unsigned int n = 10)
     while (num + 1)
     {
         const double p = (((num + 1) / 2) % 2 == 0) ? -1.0 : 1.0; // (num + 1) / 2 - номер текущего члена.
-        res += powTEST(x, num) / (double)(factTEST(num) * p);
+        res += SMIpow(x, num) / (double)(SMIfact(num) * p);
         num -= 2;
     }
     return res;
 }
 
 // Возвращает косинус угла х (радианы).
-double cosTEST(double x)
+double SMIcos(double x)
 {
     const double pi = 3.14159265358979323846;
-    return sinTEST(pi / 2.0 - x);
+    return SMIsin(pi / 2.0 - x);
 }
 
 // Возвращает тангенс угла х (радианы).
-double tgTEST(double x)
+double SMItg(double x)
 {
-    return (double)sinTEST(x) / cosTEST(x);
+    return (double)SMIsin(x) / SMIcos(x);
 }
 
 // Возвращает котангенс угла x (радианы).
-double ctgTEST(double x)
+double SMIctg(double x)
 {
-    return (double)cosTEST(x) / sinTEST(x);
-}
-
-// Возвращает число е в степени х.
-double expTEST(double x, unsigned int n = 10)
-{
-    if (absTEST(x) <= 1.0)
-    {
-        double res = 1.0;
-        while (n)
-        {
-            res += powTEST(x, n) / (double)factTEST(n);
-            n--;
-        }
-        return res;
-    }
-    double e = 2.71828182845904523536;
-    if (x > 1.0)
-    {
-        double int_x = floorTEST(x), fract_x = x - int_x;
-        return powTEST(e, int_x) * expTEST(fract_x);
-    }
-    if (x < -1.0)
-    {
-        double int_x = ceilTEST(x), fract_x = x - int_x;
-        return powTEST(e, int_x) * expTEST(fract_x);
-    }
-}
-
-// Возвращает ln(x). ln(1 + x) = x - x^2 / 2 + x^3 / 3 - x^4 / 4 + ..., работает для |x| < 1. Остальные х приводим к этому интервалу.
-double lnTEST(double x, unsigned int n = 100)
-{
-    if (x >= 0.5 && x <= 2.0)
-    {
-        double res = 0.0;
-        x--;
-        while (n)
-        {
-            const double p = (n % 2 == 0) ? -1.0 : 1.0; // Если n - чётное, то p = -1.0, иначе p = 1.0.
-            res += powTEST(x, n) / (p * n);
-            n--;
-        }
-        return res;
-    }
-    if (x > 2.0)
-        return -lnTEST(1.0 / x, n);
-    if (x > 0.0 && x < 0.5)
-        return lnTEST(2 * x, n) + lnTEST(0.5, n);
+    return (double)SMIcos(x) / SMIsin(x);
 }
 
 // Возвращает логарифм по основанию base от аргумента argument.
-double logTEST(double base, double argument, unsigned int n = 100)
+double SMIlog(double base, double argument)
 {
+    unsigned int n = 100;
     if (base > 0.0 && base != 1.0 && argument > 0.0)
-        return (double)lnTEST(argument, n) / lnTEST(base, n);
-}
-
-int main()
-{
-
+        return (double)SMIln(argument) / SMIln(base);
 }
