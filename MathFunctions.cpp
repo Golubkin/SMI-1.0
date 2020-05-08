@@ -30,9 +30,9 @@ int SMIceil(double x)
 int SMIround(double x)
 {
     if (x >= 0)
-        return floorSMI(x + 0.5);
+        return SMIfloor(x + 0.5);
     if (x < 0)
-        return ceilSMI(x - 0.5);
+        return SMIceil(x - 0.5);
 }
 
 // Возвращает модуль числа x.
