@@ -5,7 +5,7 @@
 ```
 $ make
 ```
-или вручную в Linux, следуя шагам:
+или пишите вручную в Linux, следуя шагам:
 ```
 $ bison -d parser.y
 $ flex lexer.l
