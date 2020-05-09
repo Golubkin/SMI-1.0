@@ -32,7 +32,7 @@
 ">"                             { return (MORE); }
 "<="                            { return (LESSOR); }
 ">="                            { return (MOREOR); }
-"!="                            { return (NEQUAL);
+"!="                            { return (NEQUAL); }
 "="                             { return (EQUAL); }
 ","                             { return (COMMA); }
 "#"                             { return (COMMENT); }
@@ -54,9 +54,7 @@
 "SMIexp"                        { return (TEXP); }
 "SMIln"                         { return (TLN); }
 "SMIlog"                        { return (TLOG); }
-"if"                            { return (IF); }
-"then"                          { return (THEN); }
-"else"                          { return (ELSE); }
+"say"                           { return (SAY); }
 "while"                         { return (WHILE); }
 "for"                           { return (FOR); }
 
