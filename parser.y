@@ -46,7 +46,7 @@
 %token TLN
 %token TLOG
 %token SAY
-%token UNTIL
+%token CYCLE
 
 %left PLUS MINUS
 %left MULTIPLY DIVIDE REMAINDER
