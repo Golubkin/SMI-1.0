@@ -51,6 +51,6 @@
 "SMIln"                         { return (TLN); }
 "SMIlog"                        { return (TLOG); }
 "say"                           { return (SAY); }
-"while"                         { return (WHILE); }
+"cycle"                         { return (CYCLE); }
 
 %%
