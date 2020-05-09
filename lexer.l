@@ -35,11 +35,7 @@
 "!="                            { return (NEQUAL); }
 "="                             { return (EQUAL); }
 ","                             { return (COMMA); }
-"#"                             { return (COMMENT); }
 "exit"                          { return (EXIT); }
-"and"                           { return (AND); }
-"or"                            { return (OR); }
-"not"                           { return (NOT); }
 "SMIfloor"                      { return (TFLOOR); }
 "SMIceil"                       { return (TCEIL); }
 "SMIround"                      { return (TROUND); }
@@ -56,6 +52,5 @@
 "SMIlog"                        { return (TLOG); }
 "say"                           { return (SAY); }
 "while"                         { return (WHILE); }
-"for"                           { return (FOR); }
 
 %%
