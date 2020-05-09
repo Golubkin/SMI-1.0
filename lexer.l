@@ -1,4 +1,3 @@
-/* Опция noyywrap указывает, что входной текст один, и после чтения EOF не нужно пытаться перейти к следующему тексту. */
 %option noyywrap
 
 %{
@@ -13,11 +12,22 @@
                 printf("Hello, my name is Super-Mega-Interpreter (SMI). Enter \"help\" to find out about my abilities!\n");
            }
 "help"     {
-               
+		printf("\n------------------------------------------------------------------------------------------------------------------\n");
+		printf("You can use standard operations like +, -, *, /, %%.\n\n");
+                printf("You can use standard mathematical functions whose syntax is as follows: SMIsomefunc[arg] or SMIsomefunc[arg1, arg2].\n");
+                printf("Function list:\n");
+                printf("floor,\nceil,\nround,\nabs,\npow,\nsqrt,\nfact,\nsin,\ncos,\ntg,\nctg,\nexp,\nln,\nlog.\n\n");
+                printf("You can use a command called \"say\" to find out whether you entered a true or false statement.\n");
+  		printf("Syntax: say[\"statement\"]\n");
+                printf("Inside you can use the following characters: >, <, >=, <=, =, !=\n\n");
+                printf("You can use a command called \"cycle\" to use the cycle.\n");
+ 		printf("This cycle will output the specified number as many times as you specify.\n");
+                printf("Syntax: cycle[\"int\"][\"int\"] or cycle[\"int\"][\"float\"]\n");
+		printf("------------------------------------------------------------------------------------------------------------------\n");
            }
 [ \t]+     ;
-"-"?[1-9][0-9]*           { yylval.one = atoi(yytext); return (INTNUMBER); }
-"-"?[0-9]+"."[0-9]+       { yylval.two = atof(yytext); return (FLOATNUMBER); }
+"-"?[1-9][0-9]*                 { yylval.one = atoi(yytext); return (INTNUMBER); }
+"-"?[0-9]+"."[0-9]+             { yylval.two = atof(yytext); return (FLOATNUMBER); }
 \n                              { return (NEWLINE); }
 "+"                             { return (PLUS); }
 "-"                             { return (MINUS); }
