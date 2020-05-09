@@ -26,14 +26,16 @@
 "%"                             { return (REMAINDER); }
 "("                             { return (LB); }
 ")"                             { return (RB); }
+"["                             { return (LSQ); }
+"]"                             { return (RSQ); }
+"<"                             { return (LESS); }
+">"                             { return (MORE); }
+"<="                            { return (LESSOR); }
+">="                            { return (MOREOR); }
+"!="                            { return (NEQUAL); }
+"="                             { return (EQUAL); }
 ","                             { return (COMMA); }
-"#"                             { return (COMMENT); }
-"<"                             { return (LC); }
-">"                             { return (RC); }
 "exit"                          { return (EXIT); }
-"and"                           { return (AND); }
-"or"                            { return (OR); }
-"not"                           { return (NOT); }
 "SMIfloor"                      { return (TFLOOR); }
 "SMIceil"                       { return (TCEIL); }
 "SMIround"                      { return (TROUND); }
@@ -45,12 +47,10 @@
 "SMIcos"                        { return (TCOS); }
 "SMItg"                         { return (TTG); }
 "SMIctg"                        { return (TCTG); }
-"SMIexp"                        { return (TEXP);}
+"SMIexp"                        { return (TEXP); }
 "SMIln"                         { return (TLN); }
 "SMIlog"                        { return (TLOG); }
-"if"                            { return (IF); }
-"else"                          { return (ELSE); }
-"while"                         { return (WHILE); }
-"for"                           { return (FOR); }
+"say"                           { return (SAY); }
+"cycle"                         { return (CYCLE); }
 
 %%
