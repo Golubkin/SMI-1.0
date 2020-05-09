@@ -28,6 +28,7 @@
 "-"?[0-9]+"."[0-9]+             { yylval.two = atof(yytext); return (FLOATNUMBER); }
 \n                              { return (NEWLINE); }
 "+"                             { return (PLUS); }
+"-"                             { return (MINUS); }
 "*"                             { return (MULTIPLY); }
 "/"                             { return (DIVIDE); }
 "%"                             { return (REMAINDER); }
