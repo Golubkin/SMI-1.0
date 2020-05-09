@@ -31,10 +31,6 @@
 %token EQUAL
 %token NEQUAL
 %token COMMA
-%token COMMENT
-%token AND
-%token OR
-%token NOT
 %token TFLOOR
 %token TCEIL
 %token TROUND
@@ -50,10 +46,8 @@
 %token TLN
 %token TLOG
 %token SAY
-%token WHILE
-%token FOR
+%token UNTIL
 
-%left OR AND NOT
 %left PLUS MINUS
 %left MULTIPLY DIVIDE REMAINDER
 
