@@ -1,5 +1,33 @@
+cmake_minimum_required(VERSION 3.0)
+
 project(SMI)
 
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+set(CMAKE_CXX_STANDART 11)
 
-add_executable(SMI MathFunctions.cpp)
+# проверяем наличие BISON
+FIND_PACKAGE(BISON REQUIRED)
+	#определяем правило, позволяющее произвести parser.tab.c parser.tab.h
+	ADD_CUSTOM_COMMAND(
+		#файлы, которые генерируем
+  		OUTPUT parser.tab.c parser.tab.h
+		#команда генерации
+  		COMMAND bison -d ${CMAKE_CURRENT_SOURCE_DIR}/parser.y
+  		COMMENT "Running bison command on ${CMAKE_CURRENT_SOURCE_DIR}/parser.y"
+  		DEPENDS parser.y
+	)
+
+# проверяем наличие FLEX
+FIND_PACKAGE(FLEX REQUIRED)
+	#определяем правило, позволяющее произвести  lex.yy.c 	
+	ADD_CUSTOM_COMMAND(
+		#файлы, которые генерируем
+  		OUTPUT lex.yy.c
+		#команда генерации
+ 		COMMAND flex ${CMAKE_CURRENT_SOURCE_DIR}/lexer.l
+  		COMMENT "Running flex command on ${CMAKE_CURRENT_SOURCE_DIR}/lexer.l"
+ 	 	DEPENDS parser.tab.c parser.tab.h lexer.l
+	)
+
+add_executable(${PROJECT_NAME} lex.yy.c  parser.tab.c)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+target_link_libraries(${PROJECT_NAME} PRIVATE m)
