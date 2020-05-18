@@ -1,0 +1,616 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.18"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SMI (Super-Mega-Interpreter): Файл D:/Road to the Dream/SMI/SMI-1.0/test/MathFunctions.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+</script>
+<script type="text/javascript" async="async" src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">SMI (Super-Mega-Interpreter)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.18 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('_math_functions_8cpp.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл MathFunctions.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:abb8f3d7031ea88c4af7f4cd83e40e4b8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#abb8f3d7031ea88c4af7f4cd83e40e4b8">SMIfloor</a> (double x)</td></tr>
+<tr class="memdesc:abb8f3d7031ea88c4af7f4cd83e40e4b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция округления вниз.  <a href="_math_functions_8cpp.html#abb8f3d7031ea88c4af7f4cd83e40e4b8">Подробнее...</a><br /></td></tr>
+<tr class="separator:abb8f3d7031ea88c4af7f4cd83e40e4b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a878d77c0ca2cd87a11ad4aef90975034"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a878d77c0ca2cd87a11ad4aef90975034">SMIceil</a> (double x)</td></tr>
+<tr class="memdesc:a878d77c0ca2cd87a11ad4aef90975034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция округления вверх.  <a href="_math_functions_8cpp.html#a878d77c0ca2cd87a11ad4aef90975034">Подробнее...</a><br /></td></tr>
+<tr class="separator:a878d77c0ca2cd87a11ad4aef90975034"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4383c7642ac835f96758f2ff136e8599"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a4383c7642ac835f96758f2ff136e8599">SMIround</a> (double x)</td></tr>
+<tr class="memdesc:a4383c7642ac835f96758f2ff136e8599"><td class="mdescLeft">&#160;</td><td class="mdescRight">Стандартное округление.  <a href="_math_functions_8cpp.html#a4383c7642ac835f96758f2ff136e8599">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4383c7642ac835f96758f2ff136e8599"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f9a1606e8cf5e1c68ff1a7b6dc8df77"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a8f9a1606e8cf5e1c68ff1a7b6dc8df77">SMIabs</a> (double x)</td></tr>
+<tr class="memdesc:a8f9a1606e8cf5e1c68ff1a7b6dc8df77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Модуль числа.  <a href="_math_functions_8cpp.html#a8f9a1606e8cf5e1c68ff1a7b6dc8df77">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8f9a1606e8cf5e1c68ff1a7b6dc8df77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7841c9b9b76e2868fa2206ce4d305328"><td class="memItemLeft" align="right" valign="top">unsigned long long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a7841c9b9b76e2868fa2206ce4d305328">SMIfact</a> (unsigned int x)</td></tr>
+<tr class="memdesc:a7841c9b9b76e2868fa2206ce4d305328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Факториал числа.  <a href="_math_functions_8cpp.html#a7841c9b9b76e2868fa2206ce4d305328">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7841c9b9b76e2868fa2206ce4d305328"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d6ac311a731aff61dae523df5b0aa3d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a5d6ac311a731aff61dae523df5b0aa3d">SMIln</a> (double x)</td></tr>
+<tr class="memdesc:a5d6ac311a731aff61dae523df5b0aa3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Натуральный логарифм числа.  <a href="_math_functions_8cpp.html#a5d6ac311a731aff61dae523df5b0aa3d">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5d6ac311a731aff61dae523df5b0aa3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a968fb90f62dc2db7dbf3f7341cbd331a"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a968fb90f62dc2db7dbf3f7341cbd331a">SMIexp</a> (double x)</td></tr>
+<tr class="memdesc:a968fb90f62dc2db7dbf3f7341cbd331a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Число е в степени x.  <a href="_math_functions_8cpp.html#a968fb90f62dc2db7dbf3f7341cbd331a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a968fb90f62dc2db7dbf3f7341cbd331a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfe74579e99fa27d741e97f4edce2662"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#abfe74579e99fa27d741e97f4edce2662">SMIpow</a> (double x, double n)</td></tr>
+<tr class="memdesc:abfe74579e99fa27d741e97f4edce2662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция \(\ x^n \).  <a href="_math_functions_8cpp.html#abfe74579e99fa27d741e97f4edce2662">Подробнее...</a><br /></td></tr>
+<tr class="separator:abfe74579e99fa27d741e97f4edce2662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94325523a70bdae3d3c9be06dfbb425b"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a94325523a70bdae3d3c9be06dfbb425b">SMIsqrt</a> (double x)</td></tr>
+<tr class="memdesc:a94325523a70bdae3d3c9be06dfbb425b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Квадратный корень.  <a href="_math_functions_8cpp.html#a94325523a70bdae3d3c9be06dfbb425b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a94325523a70bdae3d3c9be06dfbb425b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a285e7bb9c380a028a0d6dcbf7791c871"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a285e7bb9c380a028a0d6dcbf7791c871">SMIsin</a> (double x)</td></tr>
+<tr class="memdesc:a285e7bb9c380a028a0d6dcbf7791c871"><td class="mdescLeft">&#160;</td><td class="mdescRight">Синус.  <a href="_math_functions_8cpp.html#a285e7bb9c380a028a0d6dcbf7791c871">Подробнее...</a><br /></td></tr>
+<tr class="separator:a285e7bb9c380a028a0d6dcbf7791c871"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38d6717af2a3fd53f13b9720fdc87aa8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a38d6717af2a3fd53f13b9720fdc87aa8">SMIcos</a> (double x)</td></tr>
+<tr class="memdesc:a38d6717af2a3fd53f13b9720fdc87aa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Косинус.  <a href="_math_functions_8cpp.html#a38d6717af2a3fd53f13b9720fdc87aa8">Подробнее...</a><br /></td></tr>
+<tr class="separator:a38d6717af2a3fd53f13b9720fdc87aa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a425b1c164334764c84d9dcc79e33c894"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#a425b1c164334764c84d9dcc79e33c894">SMItg</a> (double x)</td></tr>
+<tr class="memdesc:a425b1c164334764c84d9dcc79e33c894"><td class="mdescLeft">&#160;</td><td class="mdescRight">Тангенс.  <a href="_math_functions_8cpp.html#a425b1c164334764c84d9dcc79e33c894">Подробнее...</a><br /></td></tr>
+<tr class="separator:a425b1c164334764c84d9dcc79e33c894"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9c334c3596112907ce4d1f6051b4e4e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#aa9c334c3596112907ce4d1f6051b4e4e">SMIctg</a> (double x)</td></tr>
+<tr class="memdesc:aa9c334c3596112907ce4d1f6051b4e4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Тангенс.  <a href="_math_functions_8cpp.html#aa9c334c3596112907ce4d1f6051b4e4e">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa9c334c3596112907ce4d1f6051b4e4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5af202f1ae8c5621d85fe368b0d004d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_math_functions_8cpp.html#af5af202f1ae8c5621d85fe368b0d004d">SMIlog</a> (double base, double argument)</td></tr>
+<tr class="memdesc:af5af202f1ae8c5621d85fe368b0d004d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Логарифм числа.  <a href="_math_functions_8cpp.html#af5af202f1ae8c5621d85fe368b0d004d">Подробнее...</a><br /></td></tr>
+<tr class="separator:af5af202f1ae8c5621d85fe368b0d004d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Функции</h2>
+<a id="a8f9a1606e8cf5e1c68ff1a7b6dc8df77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f9a1606e8cf5e1c68ff1a7b6dc8df77">&#9670;&nbsp;</a></span>SMIabs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMIabs </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Модуль числа. </p>
+<p>Функция возвращает модуль числа x.</p>
+<p>1.Если число типа double больше либо равно нулю, то функция возвращает это число.</p>
+<p>2.Если число типа double меньше нуля, то функция возвращает противоположное число.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a878d77c0ca2cd87a11ad4aef90975034"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a878d77c0ca2cd87a11ad4aef90975034">&#9670;&nbsp;</a></span>SMIceil()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SMIceil </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функция округления вверх. </p>
+<p>Функция возвращает минимальное целое, которое не меньше x.</p>
+<p>1.Если число типа double положительное и без остатка, то функция возвращает это число, округленное в тип int. В случае если число с остатком, то возвращается число преобразованное в тип int и увеличенное на единицу.</p>
+<p>2.Если число типа double меньше либо равно нулю, то функция возвращает число преобразованное в тип int.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a38d6717af2a3fd53f13b9720fdc87aa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38d6717af2a3fd53f13b9720fdc87aa8">&#9670;&nbsp;</a></span>SMIcos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMIcos </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Косинус. </p>
+<p>Функция возвращает косинус угла х (радианы).</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция работает с использование функции SMIsin на основе формулы приведения \(\ sin((pi/2) - x) = cos(x) \) </p>
+
+</div>
+</div>
+<a id="aa9c334c3596112907ce4d1f6051b4e4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9c334c3596112907ce4d1f6051b4e4e">&#9670;&nbsp;</a></span>SMIctg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMIctg </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Тангенс. </p>
+<p>Функция возвращает котангенс угла х (радианы).</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Реализуется по определению котангенса. Путем деления SMIcos(x) на SMIsin(x). </p>
+
+</div>
+</div>
+<a id="a968fb90f62dc2db7dbf3f7341cbd331a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a968fb90f62dc2db7dbf3f7341cbd331a">&#9670;&nbsp;</a></span>SMIexp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMIexp </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Число е в степени x. </p>
+<p>Функция возвращает \(\ e^x \). Онована на ряде Маклорена \(\ e^x = 1 + x / 1! + x^2 / 2! + x^3 / 3! + ...\)(ограничились десятью слагаемыми)</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Принцип работы:</p>
+<p>1.Если |x| \(\ &lt;= \) 0.</p>
+<p>Заводим цикл while пока не пройдем все слагаемые(n = 10) ряда Маклорена. Внутри заводим цикл for и возводим x в степень. Затем реализуем формулу ряда Маклорена с помощью факториала SMIfact(n). И так пока не закончит работать цикл while.</p>
+<p>2.Если x \(\ &gt; \) 1.</p>
+<p>Здесь реализуется свойство степеней с одинаковыми основаниями \(\ a^b * a^c = a^{b+c} \).</p>
+<p>Для этого заводим две новые переменные, которые разделяют дробное число на целую часть и дробную.</p>
+<p>Переменная int_x округляется вниз с помощью SMIfloor(x), а fract_x находит дробную часть. Далее с помощью цикла for возводим e в целую степень, а в результате получаем произведение этой экспаненты на SMIexp(fract_x) (то есть e в оставшейся дробной степени).</p>
+<p>3.Если x &lt; -1.0</p>
+<p>Реализуется на подобие как и в пункте 2. Только округление отрицательных чисел производится с помощью SMIceil(x). Далее представляем число в отрицательной степени как один делить на тоже число только в положительной степени. И используем готовую функцию SMIexp(fract_x). </p>
+
+</div>
+</div>
+<a id="a7841c9b9b76e2868fa2206ce4d305328"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7841c9b9b76e2868fa2206ce4d305328">&#9670;&nbsp;</a></span>SMIfact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long long int SMIfact </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Факториал числа. </p>
+<p>Функция возвращает факториал числа x.</p>
+<dl class="section warning"><dt>Предупреждения</dt><dd>Функция не работает для x &gt; 20. Так как факториал очень быстро растет.</dd></dl>
+<p>1.Функция работает по принципу рекурсии. Если число x типа unsigned int больше единицы, то значение x умножаем на вызов функции. И так до тех пор, пока x не станет равным единице или нулю.</p>
+<p>2.Если число x типа unsigned int равняется единице или нулю, то функция возвращает единицу.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа unsigned int . </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abb8f3d7031ea88c4af7f4cd83e40e4b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb8f3d7031ea88c4af7f4cd83e40e4b8">&#9670;&nbsp;</a></span>SMIfloor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SMIfloor </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функция округления вниз. </p>
+<p>Функция возвращает максимальное целое, не превышающее x.</p>
+<p>1.Если число типа double больше или равно нуля, то функция возвращает это число преобразованное в тип int.</p>
+<p>2.Если число типа double меньше нуля и без остатка, то функция возвращает это число преобразованное в тип int. В случае, если число отрицательное и дробое, то функция возвращает число преобразованное в int, уменьшенное на единицу.(Например, число -3,5 округлится до -4)</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5d6ac311a731aff61dae523df5b0aa3d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d6ac311a731aff61dae523df5b0aa3d">&#9670;&nbsp;</a></span>SMIln()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMIln </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Натуральный логарифм числа. </p>
+<p>Функция ln(x). \(\ ln(1+x) = x - x^2 / 2 + x^3 / 3 - x^4 / 4 + ...\)</p>
+<p>Для точности выбрали число слагаемых n = 100.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Предупреждения</dt><dd>Формула для |x| &lt; 1. Остальные x приводим к этому интервалу.</dd></dl>
+<p>Так как формула разложения в ряд Маклорена работает при |x| &gt; 1. То (1 + x) лежит в интервале от 0.0 до 2.0. Для расчета логарифма для произвольного числа необходимо вычитать единицу. Что и выполняется в функции.</p>
+<p>Если посмотреть на график натурального логарифма, то при x близких к нулю график стремится в минус бесконечность. Поэтому график натурального логарифма и график ряда Маклорена плохо совпадают на интервале от 0 до 0.5. Самое точное совпадение происходит при x = 0.5. Поэтому выбираем интервал от 0.5 до 2.0. А интервал от 0 до 0.5 приводим к интервалу от 0.5 до 2.0</p>
+<p>Также при x &gt; 2 график натурального логарифма и график ряда Маклорана плохо совпадают, поэтому этот интервал приводим к интервалу от 0.5 до 2.0.</p>
+<p>Если x &gt;= 0.5 и x &lt;= 2.0 то сначала вычитаем единицу. Заводим цикл while пока не переберем все слагаемые. Внутри заводим переменную p, которая принимает значение -1.0 или 1.0 в зависимости от четности. Заводим цикл for, перебирая слагаемые, возводим x в нужную степень. Далее реализуем окончательную формулу для слагаемого ряда Маклорена с учетом знака.</p>
+<p>Если |x| &gt; 2, то делаем преобразование над логарифмом \(\ ln(x) = -ln(1/x) \). Делается это для того, чтобы путем нескольких повторений аргумент попадал в промежуток от 0.5 до 2.0.</p>
+<p>Если x &gt; 0.0 и x &lt; 0.5, то, используя свойста логарифмов \(\ ln(a*b) = ln(a) + ln(b) \), приводим к промежутку от 0.5 до 2.0. С помощью такого приведения мы исходный логарифм представляем в виде суммы логарифма с двойным аргументом и логарифма от 0.5. Рано или поздно этот двойной аргумент придет к нужному интервалу. И сработает другое условие, где x &gt;= 0.5 и x &lt;= 2.0. </p>
+
+</div>
+</div>
+<a id="af5af202f1ae8c5621d85fe368b0d004d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5af202f1ae8c5621d85fe368b0d004d">&#9670;&nbsp;</a></span>SMIlog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMIlog </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>base</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>argument</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Логарифм числа. </p>
+<p>Функция возвращает логарифм числа.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">base</td><td>основание логирифма типа double </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">argument</td><td>логирифма типа double</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Основана на свойстве \(\ log_a(b) = ln(b)/ln(a)\) </p>
+
+</div>
+</div>
+<a id="abfe74579e99fa27d741e97f4edce2662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfe74579e99fa27d741e97f4edce2662">&#9670;&nbsp;</a></span>SMIpow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMIpow </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Функция \(\ x^n \). </p>
+<dl class="section warning"><dt>Предупреждения</dt><dd>При целом n число x - любое (кроме случая x = 0 и n &lt;= 0). При действительном n число x &gt;= 0. </dd>
+<dd>
+Иррациональных чисел в C++ нет, поэтому вместо действительных рассматриваем рациональные.</dd></dl>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">n</td><td>степень числа типа double.</td></tr>
+  </table>
+  </dd>
+</dl>
+<ol type="1">
+<li><p class="startli">Если n - целое, и его нельзя представить в виде дроби (т.к. тогда мы расширяем число до рациональных):</p>
+<p class="startli">a)При x = 0 и n &lt;= 0, функция ничего не возвращает;</p>
+<p class="startli">б)При x = 0 и n &gt; 0, функция возвращает ноль;</p>
+<p class="startli">в)При отличном от нуля значении x и n = 0, функция возрващает ноль;</p>
+<p class="startli">г)Если n &gt; 0, то с помощью цикла while возводим число x в нужную степень n;</p>
+<p class="startli">д)При отцицательных значениях n и отличном от нуля значении x выводится</p>
+</li>
+</ol>
+<div class="fragment"><div class="line"><span class="keywordflow">return</span> 1.0 / <a class="code" href="_math_functions_8cpp.html#abfe74579e99fa27d741e97f4edce2662">SMIpow</a>(x, -n);</div>
+</div><!-- fragment --><p>То есть реализуем ранее созданную функцию, задав параметр -n (для того , чтобы работала как функция SMIpow с положительными значениями).</p>
+<p>2.Если n - действительное (в нашем случае - просто рациональное):</p>
+<dl class="section warning"><dt>Предупреждения</dt><dd>При x &lt; 0 ф-я не определена.</dd></dl>
+<p>а)При нулевом значении x, функция возвращает ноль.</p>
+<p>б)При x &gt; 0 выводится функция SMIexp с параметром (n*SMIln(x)). Для того, чтобы реализовать свойство \(\ e^{ln(x^n)} = x^n \) </p>
+
+</div>
+</div>
+<a id="a4383c7642ac835f96758f2ff136e8599"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4383c7642ac835f96758f2ff136e8599">&#9670;&nbsp;</a></span>SMIround()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SMIround </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Стандартное округление. </p>
+<p>Функция возвращает округленное значение чмсла x.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция работает на основе SMIfloor(x) и SMIceil(x). И к входящему значению прибаляем 0.5 в SMIfloor(x), или же отнимаем 0.5 в SMIceil(x). Это делается для того, чтобы правильно работало округление положительных чисел и отрицательных чисел.</p>
+<p>То есть для положительных чисел, если после запятой стоит число больше или равное 5, то путем прибавления 0.5 как раз в функции SMIfloor(x) округляется в большую сторону. Если после запятой стоит число меньшее пяти, то, даже с учетом дабавления 0.5, округляется в меньшую сторону.</p>
+<p>Если числа отрицательные, то алгоритм тот же, только отнимаем 0.5 и используем функцию SMIceil(x). </p>
+
+</div>
+</div>
+<a id="a285e7bb9c380a028a0d6dcbf7791c871"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a285e7bb9c380a028a0d6dcbf7791c871">&#9670;&nbsp;</a></span>SMIsin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMIsin </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Синус. </p>
+<p>Функция возвращает синус угла х (радианы). n - количество слагаемых в ряде Маклорена. Онована на ряде Маклорена \(\ sin(x) = x - x^2 / 3! + x^5 / 5! - x^7 / 7! + ...\)</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция работает с интервалом (-pi, pi). Остальные значения приводятся с помощью цикла while к этому интервалу.</p>
+<p>Предварительно заводим переменную num, которая обозначает число учавствующее в последнем ряде Маклорена. Это делается для учета знака в формуле.</p>
+<p>В результате выводится ответ реализованной формулы, с помощью уже описанных функций SMIpow и SMIfact. </p>
+
+</div>
+</div>
+<a id="a94325523a70bdae3d3c9be06dfbb425b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94325523a70bdae3d3c9be06dfbb425b">&#9670;&nbsp;</a></span>SMIsqrt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMIsqrt </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Квадратный корень. </p>
+<p>Функция возвращает квадратный корень числа x.</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Принцип работы: Сначала определяем в каких пределах может находится результат. Так как корень можно брать только из x &gt;= 0, то минимальный нижнbй предел равен нулю, а верхний предел равен самому x. Причем при x &lt;= 1 верхний предел равен 1.</p>
+<p>Далее с помощью цикла while, пока находимся в выделенном отрезке, проверяем разность среднего арифметического концов отрезка с исходым значением x.</p>
+<p>Если такая разность по модулю отличается только лишь на заданное эпсилон, то выводится результат.</p>
+<p>Иначе проверяем следующие условия:</p>
+<p>а)если разность меньше нуля, то нижним пределом теперь считаем найденное среднее арифметическое;</p>
+<p>б)если не выполнились прошлые условия, то в таком случае разность получается положительной и верхним пределом считаем найденное среднее арифметическое. </p>
+
+</div>
+</div>
+<a id="a425b1c164334764c84d9dcc79e33c894"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a425b1c164334764c84d9dcc79e33c894">&#9670;&nbsp;</a></span>SMItg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SMItg </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Тангенс. </p>
+<p>Функция возвращает тангенс угла х (радианы).</p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>входящий параметр типа double</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Реализуется по определению тангенса. Путем деления SMIsin(x) на SMIcos(x). </p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="a_math_functions_8cpp_html_abfe74579e99fa27d741e97f4edce2662"><div class="ttname"><a href="_math_functions_8cpp.html#abfe74579e99fa27d741e97f4edce2662">SMIpow</a></div><div class="ttdeci">double SMIpow(double x, double n)</div><div class="ttdoc">Функция .</div><div class="ttdef"><b>Definition:</b> MathFunctions.cpp:299</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_2c7e89309f7c31f95c313526dc54d8b1.html">SMI</a></li><li class="navelem"><a class="el" href="dir_cfa2602b460a193a5314e2290fe77214.html">SMI-1.0</a></li><li class="navelem"><a class="el" href="dir_0db280174d5329ee04500f07d977c8c0.html">test</a></li><li class="navelem"><a class="el" href="_math_functions_8cpp.html">MathFunctions.cpp</a></li>
+    <li class="footer">Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.18 </li>
+  </ul>
+</div>
+</body>
+</html>
