@@ -176,7 +176,8 @@ double SMIexp(double x)
     {
         double int_x = SMIceil(x), fract_x = x - int_x;
         double powValue = 1.0;
-        for(int i = int_x; i != 0; i++){ powValue *= e; powValue = 1.0 / powValue; }
+        for(int i = int_x; i != 0; i++){ powValue *= e; }
+        powValue = 1.0 / powValue;
         return powValue * SMIexp(fract_x);
     }
 }
