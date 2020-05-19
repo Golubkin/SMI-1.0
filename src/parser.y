@@ -1,7 +1,7 @@
 %{
       #include <stdio.h>
       #include <stdlib.h>
-      #include "MathFunctions.cpp"
+      #include "src/MathFunctions/MathFunctions.cpp"
       extern int yylex();
       extern int yyparse();
       extern FILE* yyin;
