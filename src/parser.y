@@ -2,9 +2,7 @@
       #include <stdio.h>
       #include <stdlib.h>
       #include "src/MathFunctions/MathFunctions.cpp"
-      extern int yylex();
-      extern int yyparse();
-      extern FILE* yyin;
+      int yylex();
       void yyerror(const char *s);
 %}
 
@@ -199,16 +197,6 @@ expr1: INTNUMBER			     	 { $$ = $1; }
 ;
 
 %%
-
-int main() {
-	yyin = stdin;
-
-	do {
-		yyparse();
-	} while(!feof(yyin));
-
-	return 0;
-}
 
 void yyerror(const char* s) {
 	fprintf(stderr, "Parse error: %s\n", s);

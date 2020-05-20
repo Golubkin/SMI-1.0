@@ -4,30 +4,19 @@ project(SMI)
 
 set(CMAKE_CXX_STANDART 11)
 
-# проверяем наличие BISON
 FIND_PACKAGE(BISON REQUIRED)
-	#определяем правило, позволяющее произвести parser.tab.c parser.tab.h
-	ADD_CUSTOM_COMMAND(
-		#файлы, которые генерируем
-  		OUTPUT parser.tab.c parser.tab.h
-		#команда генерации
-  		COMMAND bison -d ${CMAKE_CURRENT_SOURCE_DIR}/parser.y
-  		COMMENT "Running bison command on ${CMAKE_CURRENT_SOURCE_DIR}/parser.y"
-  		DEPENDS parser.y
-	)
-
-# проверяем наличие FLEX
 FIND_PACKAGE(FLEX REQUIRED)
-	#определяем правило, позволяющее произвести  lex.yy.c 	
-	ADD_CUSTOM_COMMAND(
-		#файлы, которые генерируем
-  		OUTPUT lex.yy.c
-		#команда генерации
- 		COMMAND flex ${CMAKE_CURRENT_SOURCE_DIR}/lexer.l
-  		COMMENT "Running flex command on ${CMAKE_CURRENT_SOURCE_DIR}/lexer.l"
- 	 	DEPENDS parser.tab.c parser.tab.h lexer.l
-	)
 
-add_executable(${PROJECT_NAME} lex.yy.c  parser.tab.c)
-target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+BISON_TARGET(PARSER src/parser.y ${CMAKE_CURRENT_BINARY_DIR}/parser.cpp)
+FLEX_TARGET(SCANNER src/lexer.l  ${CMAKE_CURRENT_BINARY_DIR}/lexer.cpp)
+
+ADD_FLEX_BISON_DEPENDENCY(SCANNER PARSER)
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_executable(${PROJECT_NAME}
+	src/main.cpp
+	${BISON_PARSER_OUTPUTS}
+	${FLEX_SCANNER_OUTPUTS}
+)
+
 target_link_libraries(${PROJECT_NAME} PRIVATE m)
