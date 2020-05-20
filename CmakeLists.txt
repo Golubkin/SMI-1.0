@@ -20,3 +20,9 @@ add_executable(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE m)
+
+FIND_PACKAGE(DOXYGEN)
+if (DOXYGEN_FOUND)
+	set(DOXYGEN_GENERATE_HTML YES)
+	doxygen_add_docs(doxygen src/)
+endif(DOXYGEN_FOUND)
