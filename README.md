@@ -9,8 +9,8 @@ $ make
 ```
 или пишите вручную в Linux, следуя шагам:
 ```
-$ bison -d parser.y
-$ flex lexer.l
+$ bison -d src/parser.y
+$ flex src/lexer.l
 $ gcc parser.tab.c lex.yy.c -o smi -lm
 $ ./smi
 ```
