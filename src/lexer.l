@@ -26,8 +26,8 @@
 		printf("------------------------------------------------------------------------------------------------------------------\n");
            }
 [ \t]+     ;
-"-"?[1-9][0-9]*                 { yylval.one = atoi(yytext); return (INTNUMBER); }
-"-"?[0-9]+"."[0-9]+             { yylval.two = atof(yytext); return (FLOATNUMBER); }
+[1-9][0-9]*                     { yylval.one = atoi(yytext); return (INTNUMBER); }
+[0-9]+"."[0-9]+                 { yylval.two = atof(yytext); return (FLOATNUMBER); }
 \n                              { return (NEWLINE); }
 "+"                             { return (PLUS); }
 "-"                             { return (MINUS); }
