@@ -28,6 +28,7 @@
 %token MOREOR
 %token EQUAL
 %token NEQUAL
+%token SETVALUE
 %token COMMA
 %token TFLOOR
 %token TCEIL
