@@ -47,6 +47,8 @@
 %token SAY
 %token CYCLE
 
+%right SETVALUE
+
 %left PLUS MINUS
 %left MULTIPLY DIVIDE REMAINDER
 
