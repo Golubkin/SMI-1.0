@@ -44,7 +44,8 @@
 "<="                            { return (LESSOR); }
 ">="                            { return (MOREOR); }
 "!="                            { return (NEQUAL); }
-"="                             { return (EQUAL); }
+"=="                            { return (EQUAL); }
+"="                             { return (SETVALUE); }
 ","                             { return (COMMA); }
 "exit"                          { return (EXIT); }
 "SMIfloor"                      { return (TFLOOR); }
