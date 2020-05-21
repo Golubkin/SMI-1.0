@@ -5,7 +5,7 @@ Developers: `Зинкин Станислав` и `Гугунов Сергей`
   
 Для компиляции используйте CMake и Makefile:
 ```
-$ cmake BUILD .
+$ cmake .
 $ make
 $ ./SMI
 ```
