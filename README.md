@@ -3,16 +3,18 @@
 Lead: `Голубкин Николай`  
 Developers: `Зинкин Станислав` и `Гугунов Сергей`  
   
-Для компиляции используйте Makefile (который пока никто не сделал..):
+Для компиляции используйте CMake и Makefile:
 ```
+$ cmake .
 $ make
+$ ./SMI
 ```
 или пишите вручную в Linux, следуя шагам:
 ```
-$ bison -d parser.y
-$ flex lexer.l
-$ gcc parser.tab.c lex.yy.c -o smi -lm
-$ ./smi
+$ bison -d src/parser.y
+$ flex src/lexer.l
+$ gcc parser.tab.c lex.yy.c -o SMI -lm
+$ ./SMI
 ```
 Для работы с SMI используйте команду:
 ```

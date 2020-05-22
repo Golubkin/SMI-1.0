@@ -3,7 +3,7 @@
 %{
     #include <stdio.h>
     #define YY_DECL int yylex()
-    #include "parser.tab.h"
+    #include "parser.hpp"
 %}
 
 %%
@@ -22,12 +22,14 @@
                 printf("Inside you can use the following characters: >, <, >=, <=, =, !=\n\n");
                 printf("You can use a command called \"cycle\" to use the cycle.\n");
  		printf("This cycle will output the specified number as many times as you specify.\n");
-                printf("Syntax: cycle[\"int\"][\"int\"] or cycle[\"int\"][\"float\"]\n");
-		printf("------------------------------------------------------------------------------------------------------------------\n");
+                printf("Syntax: cycle[\"int\"][\"int\"] or cycle[\"int\"][\"float\"]\n\n");
+		printf("To exit the program, enter \"exit\"\n");
+		printf("\n------------------------------------------------------------------------------------------------------------------\n");
            }
 [ \t]+     ;
-"-"?[1-9][0-9]*                 { yylval.one = atoi(yytext); return (INTNUMBER); }
-"-"?[0-9]+"."[0-9]+             { yylval.two = atof(yytext); return (FLOATNUMBER); }
+[0-9]+                          { yylval.one = atoi(yytext); return (INTNUMBER); }
+[0-9]+"."[0-9]+                 { yylval.two = atof(yytext); return (FLOATNUMBER); }
+[a-z]                           { yylval.var = *yytext - 'a'; return (VARIABLE); }
 \n                              { return (NEWLINE); }
 "+"                             { return (PLUS); }
 "-"                             { return (MINUS); }
@@ -43,7 +45,8 @@
 "<="                            { return (LESSOR); }
 ">="                            { return (MOREOR); }
 "!="                            { return (NEQUAL); }
-"="                             { return (EQUAL); }
+"=="                            { return (EQUAL); }
+"="                             { return (SETVALUE); }
 ","                             { return (COMMA); }
 "exit"                          { return (EXIT); }
 "SMIfloor"                      { return (TFLOOR); }

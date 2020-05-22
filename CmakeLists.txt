@@ -1,5 +1,28 @@
+cmake_minimum_required(VERSION 3.0)
+
 project(SMI)
 
-cmake_minimum_required(VERSION 3.13 FATAL_ERROR)
+set(CMAKE_CXX_STANDART 11)
 
-add_executable(SMI MathFunctions.cpp)
+FIND_PACKAGE(BISON REQUIRED)
+FIND_PACKAGE(FLEX REQUIRED)
+
+BISON_TARGET(PARSER src/parser.y ${CMAKE_CURRENT_BINARY_DIR}/parser.cpp)
+FLEX_TARGET(SCANNER src/lexer.l  ${CMAKE_CURRENT_BINARY_DIR}/lexer.cpp)
+
+ADD_FLEX_BISON_DEPENDENCY(SCANNER PARSER)
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR})
+add_executable(${PROJECT_NAME}
+	src/main.cpp
+	${BISON_PARSER_OUTPUTS}
+	${FLEX_SCANNER_OUTPUTS}
+)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE m)
+
+FIND_PACKAGE(DOXYGEN)
+if (DOXYGEN_FOUND)
+	set(DOXYGEN_GENERATE_HTML YES)
+	doxygen_add_docs(doxygen src/)
+endif(DOXYGEN_FOUND)
