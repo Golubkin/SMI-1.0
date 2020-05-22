@@ -88,6 +88,7 @@ expr2: FLOATNUMBER              		 { $$ = $1; }
      | MINUS TCOS LSQ expr2 RSQ       		 { $$ = -SMIcos($4); }
      | MINUS TTG LSQ expr2 RSQ        		 { $$ = -SMItg($4); }
      | MINUS TCTG LSQ expr2 RSQ      		 { $$ = -SMIctg($4); }
+     | MINUS TFACT LSQ expr2 RSQ                 { $$ = SMIfact($4); }
      | MINUS TPOW LSQ expr2 COMMA expr2 RSQ  	 { $$ = -SMIpow($4, $6); }
      | MINUS TLOG LSQ expr2 COMMA expr2 RSQ  	 { $$ = -SMIlog($4, $6); }
      | expr2 PLUS expr2	         		 { $$ = $1 + $3; }
@@ -106,6 +107,7 @@ expr2: FLOATNUMBER              		 { $$ = $1; }
      | TCOS LSQ expr2 RSQ       		 { $$ = SMIcos($3); }
      | TTG LSQ expr2 RSQ        		 { $$ = SMItg($3); }
      | TCTG LSQ expr2 RSQ      			 { $$ = SMIctg($3); }
+     | TFACT LSQ expr2 RSQ          		 { $$ = SMIfact($3); }
      | TPOW LSQ expr2 COMMA expr2 RSQ  		 { $$ = SMIpow($3, $5); }
      | TLOG LSQ expr2 COMMA expr2 RSQ  		 { $$ = SMIlog($3, $5); }
      | SAY LSQ expr2 LESS expr2 RSQ              { if($3<$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
