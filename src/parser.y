@@ -3,13 +3,15 @@
       #include <stdlib.h>
       #include "src/MathFunctions/MathFunctions.cpp"
       int yylex();
+      double sym[26];
       void yyerror(const char *s);
 %}
 
-%union { int one; float two; }
+%union { int one; float two; int var; }
 
 %token<one> INTNUMBER
 %token<two> FLOATNUMBER
+%token<var> VARIABLE
 
 %token NEWLINE
 %token EXIT
@@ -47,8 +49,6 @@
 %token SAY
 %token CYCLE
 
-%right SETVALUE
-
 %left PLUS MINUS
 %left MULTIPLY DIVIDE REMAINDER
 
@@ -63,11 +63,15 @@ calculation:
 	   | calculation line
 ;
 line: NEWLINE
-    | expr2 NEWLINE { printf("\tResult: %f\n", $1); }
-    | expr1 NEWLINE { printf("\tResult: %i\n", $1); }
-    | EXIT NEWLINE { printf("bye!\n"); exit(0); }
+    | expr1 SETVALUE expr2                       { sym[$1] = $3; }
+    | expr1 SETVALUE expr1                       { sym[$1] = $3; }
+    | expr2 NEWLINE                              { printf("\tResult: %f\n", $1); }
+    | expr1 NEWLINE                              { printf("\tResult: %i\n", $1); }
+    | EXIT NEWLINE                               { printf("bye!\n"); exit(0); }
 ;
 expr2: FLOATNUMBER              		 { $$ = $1; }
+     | VARIABLE                                  { $$ = sym[$1]; }
+     | MINUS VARIABLE                            { $$ = -sym[$2]; }
      | MINUS expr2 PLUS expr2	         	 { $$ = -$2 + $4; }
      | MINUS expr2 MINUS expr2	  		 { $$ = -$2 - $4; }
      | MINUS expr2 MULTIPLY expr2 	  	 { $$ = -$2 * $4; }
@@ -163,8 +167,8 @@ expr2: FLOATNUMBER              		 { $$ = $1; }
      | SAY LSQ expr1 NEQUAL expr1 RSQ            { if($3!=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | CYCLE LSQ expr1 RSQ LSQ expr1 RSQ         { $$ = $3; while($3 > 0){printf("%i\n", $6); $3--;}; }
 ;
-
 expr1: INTNUMBER			     	 { $$ = $1; }
+     | VARIABLE                                  { $$ = $1; }
      | MINUS expr1 PLUS expr1		   	 { $$ = -$2 + $4; }
      | MINUS expr1 MINUS expr1	   		 { $$ = -$2 - $4; }
      | MINUS expr1 MULTIPLY expr1	   	 { $$ = -$2 * $4; }
@@ -198,7 +202,6 @@ expr1: INTNUMBER			     	 { $$ = $1; }
      | TTG LSQ expr1 RSQ       			 { $$ = SMItg($3); }
      | TCTG LSQ expr1 RSQ      			 { $$ = SMIctg($3); }
 ;
-
 %%
 
 void yyerror(const char* s) {
