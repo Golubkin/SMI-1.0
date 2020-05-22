@@ -24,11 +24,12 @@
  		printf("This cycle will output the specified number as many times as you specify.\n");
                 printf("Syntax: cycle[\"int\"][\"int\"] or cycle[\"int\"][\"float\"]\n\n");
 		printf("To exit the program, enter \"exit\"\n");
-		printf("------------------------------------------------------------------------------------------------------------------\n");
+		printf("\n------------------------------------------------------------------------------------------------------------------\n");
            }
 [ \t]+     ;
 [0-9]+                          { yylval.one = atoi(yytext); return (INTNUMBER); }
 [0-9]+"."[0-9]+                 { yylval.two = atof(yytext); return (FLOATNUMBER); }
+[a-z]                           { yylval.var = *yytext - 'a'; return (VARIABLE); }
 \n                              { return (NEWLINE); }
 "+"                             { return (PLUS); }
 "-"                             { return (MINUS); }
