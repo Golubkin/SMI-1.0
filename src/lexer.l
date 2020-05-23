@@ -23,6 +23,7 @@
                 printf("You can use a command called \"cycle\" to use the cycle.\n");
  		printf("This cycle will output the specified number as many times as you specify.\n");
                 printf("Syntax: cycle[\"int\"][\"int\"] or cycle[\"int\"][\"float\"]\n\n");
+		printf("You can create variables. Syntax: \"letter\" = \"value\".\n\n");
 		printf("To exit the program, enter \"exit\"\n");
 		printf("\n------------------------------------------------------------------------------------------------------------------\n");
            }
