@@ -1,8 +1,10 @@
 # SMI (Super-Mega-Interpreter)  
-  
+
+![SMI](https://user-images.githubusercontent.com/55135260/82719267-a7685b00-9cb1-11ea-8a45-90eb949d086a.PNG)
+
 Lead: `Голубкин Николай`  
 Developers: `Зинкин Станислав` и `Гугунов Сергей`  
-  
+
 Для компиляции используйте CMake и Makefile:
 ```
 $ cmake .
