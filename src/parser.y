@@ -70,31 +70,14 @@ line: NEWLINE
     | EXIT NEWLINE                               { printf("bye!\n"); exit(0); }
 ;
 expr2: FLOATNUMBER              		 { $$ = $1; }
+     | MINUS FLOATNUMBER                         { $$ = -$2; }
      | VARIABLE                                  { $$ = sym[$1]; }
      | MINUS VARIABLE                            { $$ = -sym[$2]; }
-     | MINUS expr2 PLUS expr2	         	 { $$ = -$2 + $4; }
-     | MINUS expr2 MINUS expr2	  		 { $$ = -$2 - $4; }
-     | MINUS expr2 MULTIPLY expr2 	  	 { $$ = -$2 * $4; }
-     | MINUS expr2 DIVIDE expr2	  		 { $$ = -$2 / $4; }             
-     | MINUS LB expr2 RB  	        	 { $$ = -$3; }
-     | MINUS TFLOOR LSQ expr2 RSQ      		 { $$ = -SMIfloor($4); }
-     | MINUS TCEIL LSQ expr2 RSQ        	 { $$ = -SMIceil($4); }
-     | MINUS TROUND LSQ expr2 RSQ         	 { $$ = -SMIround($4); }
-     | MINUS TABS LSQ expr2 RSQ            	 { $$ = -SMIabs($4); }
-     | MINUS TLN LSQ expr2 RSQ         	         { $$ = -SMIln($4); }
-     | MINUS TEXP LSQ expr2 RSQ       	         { $$ = -SMIexp($4); }
-     | MINUS TSQRT LSQ expr2 RSQ        	 { $$ = -SMIsqrt($4); }
-     | MINUS TSIN LSQ expr2 RSQ       		 { $$ = -SMIsin($4); }
-     | MINUS TCOS LSQ expr2 RSQ       		 { $$ = -SMIcos($4); }
-     | MINUS TTG LSQ expr2 RSQ        		 { $$ = -SMItg($4); }
-     | MINUS TCTG LSQ expr2 RSQ      		 { $$ = -SMIctg($4); }
-     | MINUS TFACT LSQ expr2 RSQ                 { $$ = SMIfact($4); }
-     | MINUS TPOW LSQ expr2 COMMA expr2 RSQ  	 { $$ = -SMIpow($4, $6); }
-     | MINUS TLOG LSQ expr2 COMMA expr2 RSQ  	 { $$ = -SMIlog($4, $6); }
      | expr2 PLUS expr2	         		 { $$ = $1 + $3; }
      | expr2 MINUS expr2	  		 { $$ = $1 - $3; }
      | expr2 MULTIPLY expr2 	  		 { $$ = $1 * $3; }
-     | expr2 DIVIDE expr2	  		 { $$ = $1 / $3; }             
+     | expr2 DIVIDE expr2	  		 { $$ = $1 / $3; }
+     | expr2 REMAINDER expr2                     { $$ = (int)$1 % (int)$3; }              
      | LB expr2 RB  	        		 { $$ = $2; }
      | TFLOOR LSQ expr2 RSQ      		 { $$ = SMIfloor($3); }
      | TCEIL LSQ expr2 RSQ        		 { $$ = SMIceil($3); }
@@ -116,12 +99,6 @@ expr2: FLOATNUMBER              		 { $$ = $1; }
      | SAY LSQ expr2 MOREOR expr2 RSQ            { if($3>=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr2 EQUAL expr2 RSQ             { if($3==$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr2 NEQUAL expr2 RSQ            { if($3!=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
-     | MINUS expr1 PLUS expr2	 	   	 { $$ = -$2 + $4; }
-     | MINUS expr1 MINUS expr2	      		 { $$ = -$2 - $4; }
-     | MINUS expr1 MULTIPLY expr2 	   	 { $$ = -$2 * $4; }
-     | MINUS expr1 DIVIDE expr2	   		 { $$ = -$2 / $4; }
-     | MINUS TPOW LSQ expr1 COMMA expr2 RSQ  	 { $$ = -SMIpow($4, $6); }
-     | MINUS TLOG LSQ expr1 COMMA expr2 RSQ  	 { $$ = -SMIlog($4, $6); }
      | expr1 PLUS expr2	 	   		 { $$ = $1 + $3; }
      | expr1 MINUS expr2	      		 { $$ = $1 - $3; }
      | expr1 MULTIPLY expr2 	   		 { $$ = $1 * $3; }
@@ -135,12 +112,6 @@ expr2: FLOATNUMBER              		 { $$ = $1; }
      | SAY LSQ expr1 EQUAL expr2 RSQ             { if($3==$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr1 NEQUAL expr2 RSQ            { if($3!=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | CYCLE LSQ expr1 RSQ LSQ expr2 RSQ         { $$ = $3; while($3 > 0){printf("%f\n", $6); $3--;}; }
-     | MINUS expr2 PLUS expr1	 	         { $$ = -$2 + $4; }
-     | MINUS expr2 MINUS expr1	   		 { $$ = -$2 - $4; }
-     | MINUS expr2 MULTIPLY expr1 	         { $$ = -$2 * $4; }
-     | MINUS expr2 DIVIDE expr1	  		 { $$ = -$2 / $4; }
-     | MINUS TPOW LSQ expr2 COMMA expr1 RSQ      { $$ = -SMIpow($4, $6); }
-     | MINUS TLOG LSQ expr2 COMMA expr1 RSQ      { $$ = -SMIlog($4, $6); }
      | expr2 PLUS expr1	 	   		 { $$ = $1 + $3; }
      | expr2 MINUS expr1	   		 { $$ = $1 - $3; }
      | expr2 MULTIPLY expr1 	   		 { $$ = $1 * $3; }
@@ -153,10 +124,6 @@ expr2: FLOATNUMBER              		 { $$ = $1; }
      | SAY LSQ expr2 MOREOR expr1 RSQ            { if($3>=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr2 EQUAL expr1 RSQ             { if($3==$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr2 NEQUAL expr1 RSQ            { if($3!=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
-     | MINUS expr1 DIVIDE expr1 	         { $$ = -$2 / (float)$4; }
-     | MINUS expr1 REMAINDER expr1               { $$ = -$2 % $4; }
-     | MINUS TPOW LSQ expr1 COMMA expr1 RSQ      { $$ = -SMIpow($4, $6); }
-     | MINUS TLOG LSQ expr1 COMMA expr1 RSQ      { $$ = -SMIlog($4, $6); }
      | expr1 DIVIDE expr1 	   		 { $$ = $1 / (float)$3; }
      | expr1 REMAINDER expr1                     { $$ = $1 % $3; }
      | TPOW LSQ expr1 COMMA expr1 RSQ  		 { $$ = SMIpow($3, $5); }
@@ -168,25 +135,6 @@ expr2: FLOATNUMBER              		 { $$ = $1; }
      | SAY LSQ expr1 EQUAL expr1 RSQ             { if($3==$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr1 NEQUAL expr1 RSQ            { if($3!=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | CYCLE LSQ expr1 RSQ LSQ expr1 RSQ         { $$ = $3; while($3 > 0){printf("%i\n", $6); $3--;}; }
-;
-expr1: INTNUMBER			     	 { $$ = $1; }
-     | VARIABLE                                  { $$ = $1; }
-     | MINUS expr1 PLUS expr1		   	 { $$ = -$2 + $4; }
-     | MINUS expr1 MINUS expr1	   		 { $$ = -$2 - $4; }
-     | MINUS expr1 MULTIPLY expr1	   	 { $$ = -$2 * $4; }
-     | MINUS LB expr1 RB		   	 { $$ = -$3; }
-     | MINUS TFLOOR LSQ expr1 RSQ          	 { $$ = -SMIfloor($4); }
-     | MINUS TCEIL LSQ expr1 RSQ        	 { $$ = -SMIceil($4); }
-     | MINUS TROUND LSQ expr1 RSQ         	 { $$ = -SMIround($4); }
-     | MINUS TABS LSQ expr1 RSQ            	 { $$ = -SMIabs($4); }
-     | MINUS TFACT LSQ expr1 RSQ          	 { $$ = -SMIfact($4); }
-     | MINUS TLN LSQ expr1 RSQ          	 { $$ = -SMIln($4); }
-     | MINUS TEXP LSQ expr1 RSQ         	 { $$ = -SMIexp($4); }
-     | MINUS TSQRT LSQ expr1 RSQ         	 { $$ = -SMIsqrt($4); }
-     | MINUS TSIN LSQ expr1 RSQ       		 { $$ = -SMIsin($4); }
-     | MINUS TCOS LSQ expr1 RSQ       		 { $$ = -SMIcos($4); }
-     | MINUS TTG LSQ expr1 RSQ       		 { $$ = -SMItg($4); }
-     | MINUS TCTG LSQ expr1 RSQ      		 { $$ = -SMIctg($4); }
      | expr1 PLUS expr1		   		 { $$ = $1 + $3; }
      | expr1 MINUS expr1	   		 { $$ = $1 - $3; }
      | expr1 MULTIPLY expr1	   		 { $$ = $1 * $3; }
@@ -203,6 +151,10 @@ expr1: INTNUMBER			     	 { $$ = $1; }
      | TCOS LSQ expr1 RSQ       		 { $$ = SMIcos($3); }
      | TTG LSQ expr1 RSQ       			 { $$ = SMItg($3); }
      | TCTG LSQ expr1 RSQ      			 { $$ = SMIctg($3); }
+;
+expr1: INTNUMBER			     	 { $$ = $1; }
+     | MINUS INTNUMBER                           { $$ = -$2; }
+     | VARIABLE                                  { $$ = $1; }
 ;
 %%
 
