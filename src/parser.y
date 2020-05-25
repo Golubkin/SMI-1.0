@@ -124,7 +124,6 @@ expr2: FLOATNUMBER              					 { $$ = $1; }
      | SAY LSQ expr1 MOREOR expr2 RSQ           			 { if($3>=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr1 EQUAL expr2 RSQ            			 { if($3==$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr1 NEQUAL expr2 RSQ          			         { if($3!=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
-     | CYCLE LSQ expr1 RSQ LSQ expr2 RSQ        			 { $$ = $3; while($3 > 0){printf("%f\n", $6); $3--;}; }
      | expr2 PLUS expr1	 	   					 { $$ = $1 + $3; }
      | expr2 MINUS expr1	   					 { $$ = $1 - $3; }
      | expr2 MULTIPLY expr1 	   					 { $$ = $1 * $3; }
@@ -159,7 +158,6 @@ expr2: FLOATNUMBER              					 { $$ = $1; }
      | SAY LSQ expr1 MOREOR expr1 RSQ          			         { if($3>=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr1 EQUAL expr1 RSQ           			         { if($3==$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
      | SAY LSQ expr1 NEQUAL expr1 RSQ           			 { if($3!=$5){printf("It really is!"); $$ = 1.0;}else{printf("Impudent lie! You can’t deceive me!"); $$ = 0.0;} }
-     | CYCLE LSQ expr1 RSQ LSQ expr1 RSQ        			 { $$ = $3; while($3 > 0){printf("%i\n", $6); $3--;}; }
      | expr1 PLUS expr1		   					 { $$ = $1 + $3; }
      | expr1 MINUS expr1	   					 { $$ = $1 - $3; }
      | expr1 MULTIPLY expr1	   					 { $$ = $1 * $3; }
