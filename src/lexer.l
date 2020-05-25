@@ -18,8 +18,8 @@
                 printf("Function list:\n");
                 printf("floor,\nceil,\nround,\nabs,\npow,\nsqrt,\nfact,\nsin,\ncos,\ntg,\nctg,\nexp,\nln,\nlog.\n\n");
                 printf("You can use a command called \"say\" to find out whether you entered a true or false statement.\n");
-  		printf("Syntax: say[\"statement\"]\n");
-                printf("Inside you can use the following characters: >, <, >=, <=, =, !=\n\n");
+  		printf("Syntax: say[\"statement\"] or say[\"statement\"][\"then string\"][\"else string\"]\n");
+                printf("Inside you can use the following characters: >, <, >=, <=, ==, !=\n\n");
                 printf("You can use a command called \"cycle\" to use the cycle.\n");
  		printf("This cycle will output the specified number as many times as you specify.\n");
                 printf("Syntax: cycle[\"int\"][\"int\"] or cycle[\"int\"][\"float\"]\n\n");
@@ -66,5 +66,6 @@
 "SMIlog"                        { return (TLOG); }
 "say"                           { return (SAY); }
 "cycle"                         { return (CYCLE); }
+[A-Za-z0-9!.,?_ ]+              { yylval.say = strdup(yytext); return (COM); } 
 
 %%
