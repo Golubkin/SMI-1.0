@@ -176,6 +176,10 @@ expr2: FLOATNUMBER              					 { $$ = $1; }
      | TCOS LSQ expr1 RSQ       		 			 { $$ = SMIcos($3); }
      | TTG LSQ expr1 RSQ       						 { $$ = SMItg($3); }
      | TCTG LSQ expr1 RSQ      						 { $$ = SMIctg($3); }
+     | CYCLE LSQ expr1 RSQ LSQ VARIABLE PLUS RSQ LSQ expr2 RSQ           { while($3>0){sym[$6] = sym[$6] + $10; printf("variable is %f\n", sym[$6]); $3--;} $$ = sym[$6]; }
+     | CYCLE LSQ expr1 RSQ LSQ VARIABLE MINUS RSQ LSQ expr2 RSQ          { while($3>0){sym[$6] = sym[$6] - $10; printf("variable is %f\n", sym[$6]); $3--;} $$ = sym[$6]; }
+     | CYCLE LSQ expr1 RSQ LSQ VARIABLE PLUS RSQ LSQ expr1 RSQ           { while($3>0){sym[$6] = sym[$6] + $10; printf("variable is %f\n", sym[$6]); $3--;} $$ = sym[$6]; }
+     | CYCLE LSQ expr1 RSQ LSQ VARIABLE MINUS RSQ LSQ expr1 RSQ          { while($3>0){sym[$6] = sym[$6] - $10; printf("variable is %f\n", sym[$6]); $3--;} $$ = sym[$6]; }
 ;
 expr1: INTNUMBER			     				 { $$ = $1; }
      | MINUS INTNUMBER                          			 { $$ = -$2; }
