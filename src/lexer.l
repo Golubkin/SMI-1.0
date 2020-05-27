@@ -67,6 +67,6 @@
 "SMIlog"                        { return (TLOG); }
 "say"                           { return (SAY); }
 "cycle"                         { return (CYCLE); }
-[A-Za-z0-9!.,?_ ]+              { yylval.say = strdup(yytext); return (COM); } 
+[A-Za-z0-9.,?_ ]+              { yylval.say = strdup(yytext); return (COM); } 
 
 %%
