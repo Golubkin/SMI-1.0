@@ -7,14 +7,11 @@ using namespace std;
 
 int main()
 {
-	setlocale(LC_ALL, "ru");//используем для того, чтобы можно было расшифровывать тексты на русском языке
 	srand(time(0));
 	int option;
-	//int key_random = 0;
 	string key;
 	int const SIZE = 10;
-	//int arr[SIZE];
-	
+
 	cout << "Enter the option number: 1 - encryption, 2 - decryption" << endl;
 	cin >> option;
 
@@ -22,7 +19,7 @@ int main()
 	{
 		for (int i = 0; i < SIZE; i++)
 		{
-			key += (char)(1 + rand() % 255);//сгенерированный ключ
+			key += (char)(65 + rand() % 26 + (rand() % 2) * 32);//сгенерированный ключ
 		}
 		cout << "Generated key: " << key << endl;
 
@@ -35,7 +32,7 @@ int main()
 
 		if (!openText.is_open())
 		{
-			cout << "Error! File not found!";
+			cout << "Error! File not found!You need to create a text.txt file in the source folder!";
 			return 1;
 		}
 
@@ -50,15 +47,16 @@ int main()
 			string cipher_enc;
 			ofstream cipherText("cipher.txt");//создаем файл для записи шифра
 
-				for (int i = 0; i < len_text; i++)
-				{
-					cipher_enc += (text_enc[i] ^ key[i % len_key]);//используем исключающее ИЛИ
+			for (int i = 0; i < len_text; i++)
+			{
+				cipher_enc += (text_enc[i] ^ key[i % len_key]);//используем исключающее ИЛИ
 
-				}
-				cipherText << cipher_enc;//добовляем полученный шифр в файл
-				cipherText.close();
+			}
 
-				cout << "Received cipher: " << cipher_enc << endl;
+			cipherText << cipher_enc;//добовляем полученный шифр в файл
+			cipherText.close();
+
+			cout << "Received cipher: " << cipher_enc << endl;
 		}
 	}
 
@@ -74,6 +72,7 @@ int main()
 		ifstream cipherText("cipher.txt");//считываем шифр из файла
 		getline(cipherText, text_dec, '\0');
 		cipherText.close();
+
 
 		string cipher_dec;
 		ofstream openText("text.txt");//открываем файл для записи расшифрованого текста
